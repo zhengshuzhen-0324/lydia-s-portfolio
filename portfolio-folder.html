@@ -136,8 +136,6 @@
     transform:translateY(22px);
   }
 
-  /* group that breathes gently */
-
   .folder-assembly{
     position:absolute;
     inset:0;
@@ -285,8 +283,13 @@
       rotate(-5deg);
   }
 
+  /* CARD 1: Self Intro preview */
   .card-0 .card-inner{
-    background:#FFD2C8;
+    background:
+      #FFD2C8
+      url("assets/self-intro-card.png")
+      center center / cover
+      no-repeat;
   }
 
   .card-1{
@@ -582,10 +585,7 @@
         <div class="folder-back"></div>
 
 
-        <!-- =====================================================
-             CARD 1
-             About Me
-             ===================================================== -->
+        <!-- CARD 1: About Me -->
 
         <a
           class="card card-0"
@@ -598,10 +598,7 @@
         </a>
 
 
-        <!-- =====================================================
-             CARD 2
-             Social Media Landscape
-             ===================================================== -->
+        <!-- CARD 2: Social Media Landscape -->
 
         <a
           class="card card-1"
@@ -614,10 +611,7 @@
         </a>
 
 
-        <!-- =====================================================
-             CARD 3
-             Content Output
-             ===================================================== -->
+        <!-- CARD 3: Content Output -->
 
         <a
           class="card card-2"
@@ -630,10 +624,7 @@
         </a>
 
 
-        <!-- =====================================================
-             CARD 4
-             Partnership Expansion
-             ===================================================== -->
+        <!-- CARD 4: Partnership Expansion -->
 
         <a
           class="card card-3"
@@ -646,10 +637,7 @@
         </a>
 
 
-        <!-- =====================================================
-             CARD 5
-             Community Marketing
-             ===================================================== -->
+        <!-- CARD 5: Community Marketing -->
 
         <a
           class="card card-4"
@@ -700,8 +688,6 @@
           </defs>
 
 
-          <!-- chunky shadow -->
-
           <text
             x="215"
             y="82"
@@ -740,8 +726,6 @@
           </text>
 
 
-          <!-- hot-pink outer sticker border -->
-
           <text
             x="215"
             y="72"
@@ -782,8 +766,6 @@
           </text>
 
 
-          <!-- lighter inner pink rim -->
-
           <text
             x="215"
             y="72"
@@ -823,8 +805,6 @@
             Portfolio
           </text>
 
-
-          <!-- decorative stars -->
 
           <path
             d="
@@ -872,8 +852,6 @@
       </div>
 
 
-      <!-- right-side hint arrow -->
-
       <svg
         class="hint-arrow"
         viewBox="0 0 24 24"
@@ -894,9 +872,6 @@
 
 
   <script>
-
-    // Small click feedback on cards.
-    // Navigation itself is handled by each <a href="..."> above.
 
     document
       .querySelectorAll('.card-inner')

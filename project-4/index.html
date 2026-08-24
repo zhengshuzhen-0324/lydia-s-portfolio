@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Partnership Expansion — Lydia's Portfolio</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+    }
+
+    body {
+      background: #eeeeee;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #1c2340;
+    }
+
+    /* ---------- TOP NAV ---------- */
+
+    .top-nav {
+      width: 100%;
+      padding: 28px 32px 18px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+
+      color: #1c2340;
+      text-decoration: none;
+
+      font-size: 17px;
+      font-weight: 500;
+
+      transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .back-link:hover {
+      opacity: 0.65;
+      transform: translateX(-3px);
+    }
+
+    /* ---------- PAGE ---------- */
+
+    .page {
+      width: 100%;
+      padding: 20px 42px 50px;
+    }
+
+    .project-sheet {
+      width: min(1200px, 100%);
+      margin: 0 auto;
+
+      background: #ffffff;
+
+      box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.18);
+
+      overflow: hidden;
+    }
+
+    /* ---------- IMAGE ---------- */
+
+    .project-image {
+      display: block;
+
+      width: 100%;
+      height: auto;
+
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+
+    @media (max-width: 768px) {
+      .top-nav {
+        padding: 22px 18px 14px;
+      }
+
+      .page {
+        padding: 14px 16px 32px;
+      }
+
+      .back-link {
+        font-size: 15px;
+      }
+
+      .project-sheet {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Back to the main portfolio -->
+  <nav class="top-nav">
+    <a
+      class="back-link"
+      href="../portfolio-folder.html"
+      aria-label="Back to Portfolio"
+    >
+      ← Back to Portfolio
+    </a>
+  </nav>
+
+  <!-- Project 4 -->
+  <main class="page">
+
+    <div class="project-sheet">
+
+      <img
+        class="project-image"
+        src="./partnership-expansion.png"
+        alt="Partnership Expansion — Lydia's Portfolio"
+      >
+
+    </div>
+
+  </main>
+
+</body>
+</html>

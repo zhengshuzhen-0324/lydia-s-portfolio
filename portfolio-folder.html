@@ -1,938 +1,430 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lydia's Portfolio</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html,
-    body {
-      margin: 0;
-      width: 100%;
-      min-height: 100%;
-    }
-
-    body {
-      min-height: 100vh;
-      background: #ffffff;
-      font-family: Arial, Helvetica, sans-serif;
-      overflow-x: hidden;
-    }
-
-    /* =========================
-       PAGE
-    ========================= */
-
-    .page {
-      position: relative;
-      width: 100%;
-      min-height: 100vh;
-      background: #ffffff;
-    }
-
-    /* =========================
-       HEADER
-    ========================= */
-
-    .header {
-      position: relative;
-      z-index: 100;
-      width: 100%;
-      height: 110px;
-      padding: 0 5vw;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: -1px;
-      color: #181818;
-    }
-
-    .logo-dot {
-      color: #5d95ff;
-    }
-
-    .nav {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-
-      display: flex;
-      align-items: center;
-      gap: 64px;
-    }
-
-    .nav a {
-      color: #171717;
-      text-decoration: none;
-      font-size: 16px;
-      font-weight: 400;
-    }
-
-    .connect-btn {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-
-      padding: 12px 26px;
-
-      border: 1.5px solid #1b1b1b;
-      border-radius: 999px;
-
-      color: #171717;
-      text-decoration: none;
-      font-size: 15px;
-
-      background: rgba(255, 255, 255, 0.8);
-    }
-
-    .connect-arrow {
-      font-size: 22px;
-      line-height: 1;
-    }
-
-    /* =========================
-       HERO
-    ========================= */
-
-    .hero {
-      position: relative;
-      width: 100%;
-      min-height: calc(100vh - 110px);
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      padding-bottom: 90px;
-    }
-
-    /* =========================
-       FOLDER SCENE
-    ========================= */
-
-    .folder-scene {
-      position: relative;
-
-      width: 560px;
-      height: 520px;
-
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-
-      cursor: default;
-    }
-
-    /* =========================
-       CARDS
-    ========================= */
-
-    .card {
-      position: absolute;
-
-      left: 50%;
-
-      display: block;
-
-      text-decoration: none;
-
-      transform-origin: 50% 100%;
-
-      transition:
-        transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1),
-        filter 0.4s ease;
-
-      cursor: pointer;
-    }
-
-    .card:hover {
-      filter: brightness(1.035);
-    }
-
-    .card-inner {
-      width: 100%;
-      height: 100%;
-
-      overflow: hidden;
-
-      border-radius: 24px;
-
-      box-shadow:
-        0 18px 35px rgba(70, 70, 100, 0.12),
-        0 4px 12px rgba(70, 70, 100, 0.08);
-
-      border: 1px solid rgba(255, 255, 255, 0.72);
-
-      transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-    }
-
-    .card:hover .card-inner {
-      transform: translateY(-5px);
-
-      box-shadow:
-        0 25px 42px rgba(70, 70, 100, 0.17),
-        0 6px 15px rgba(70, 70, 100, 0.1);
-    }
-
-    /*
-      默认状态：
-      五张方形卡片藏在文件夹后面，
-      只露出一小部分。
-    */
-
-    .card-0 {
-      width: 148px;
-      height: 148px;
-      bottom: 126px;
-
-      transform:
-        translate(calc(-50% - 54px), 20px)
-        rotate(-5deg);
-
-      z-index: 5;
-    }
-
-    .card-0 .card-inner {
-      background: #ffd2c8;
-    }
-
-    .card-1 {
-      width: 148px;
-      height: 148px;
-      bottom: 128px;
-
-      transform:
-        translate(calc(-50% - 26px), 14px)
-        rotate(-2deg);
-
-      z-index: 5;
-    }
-
-    .card-1 .card-inner {
-      background: #cfefd8;
-    }
-
-    .card-2 {
-      width: 148px;
-      height: 148px;
-      bottom: 132px;
-
-      transform:
-        translate(-50%, 8px)
-        rotate(1deg);
-
-      z-index: 5;
-    }
-
-    .card-2 .card-inner {
-      background: #d8d0ff;
-    }
-
-    .card-3 {
-      width: 148px;
-      height: 148px;
-      bottom: 128px;
-
-      transform:
-        translate(calc(-50% + 28px), 14px)
-        rotate(3deg);
-
-      z-index: 5;
-    }
-
-    .card-3 .card-inner {
-      background: #ffd2e1;
-    }
-
-    .card-4 {
-      width: 148px;
-      height: 148px;
-      bottom: 126px;
-
-      transform:
-        translate(calc(-50% + 56px), 20px)
-        rotate(6deg);
-
-      z-index: 5;
-    }
-
-    .card-4 .card-inner {
-      background: #d7f58a;
-    }
-
-    /*
-      HOVER 展开状态
-
-      第 1 和第 3 张稍微叠住第 2 张；
-      第 4 和第 5 张从右侧稍微叠住第 3 张。
-
-      形成参考图中不完全规则的扇形结构。
-    */
-
-    .folder-scene:hover .card-0 {
-      transform:
-        translate(calc(-50% - 205px), -72px)
-        rotate(-17deg);
-
-      z-index: 8;
-    }
-
-    .folder-scene:hover .card-1 {
-      transform:
-        translate(calc(-50% - 103px), -138px)
-        rotate(-8deg);
-
-      z-index: 6;
-    }
-
-    .folder-scene:hover .card-2 {
-      transform:
-        translate(calc(-50% - 6px), -174px)
-        rotate(1deg);
-
-      z-index: 7;
-    }
-
-    .folder-scene:hover .card-3 {
-      transform:
-        translate(calc(-50% + 82px), -132px)
-        rotate(9deg);
-
-      z-index: 9;
-    }
-
-    .folder-scene:hover .card-4 {
-      transform:
-        translate(calc(-50% + 168px), -72px)
-        rotate(16deg);
-
-      z-index: 10;
-    }
-
-    /* =========================
-       FOLDER BACK
-    ========================= */
-
-    .folder-back {
-      position: absolute;
-
-      left: 50%;
-      bottom: 64px;
-
-      width: 470px;
-      height: 265px;
-
-      transform: translateX(-50%);
-
-      z-index: 20;
-
-      border-radius: 42px 42px 50px 50px;
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(95, 205, 255, 0.88),
-          rgba(43, 177, 236, 0.94)
-        );
-
-      border: 1.5px solid rgba(255, 255, 255, 0.75);
-
-      box-shadow:
-        inset 0 2px 3px rgba(255, 255, 255, 0.65),
-        0 20px 45px rgba(35, 151, 212, 0.15);
-    }
-
-    /* folder tab */
-
-    .folder-back::before {
-      content: "";
-
-      position: absolute;
-
-      top: -48px;
-      left: 18px;
-
-      width: 190px;
-      height: 80px;
-
-      border-radius: 34px 34px 0 0;
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(101, 209, 255, 0.9),
-          rgba(49, 182, 239, 0.94)
-        );
-
-      border-top: 1.5px solid rgba(255, 255, 255, 0.75);
-      border-left: 1.5px solid rgba(255, 255, 255, 0.75);
-      border-right: 1.5px solid rgba(255, 255, 255, 0.45);
-    }
-
-    /* =========================
-       FOLDER FRONT
-    ========================= */
-
-    .folder-front {
-      position: absolute;
-
-      left: 50%;
-      bottom: 42px;
-
-      width: 500px;
-      height: 255px;
-
-      transform: translateX(-50%);
-
-      z-index: 30;
-
-      border-radius: 46px;
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(75, 196, 250, 0.88),
-          rgba(46, 174, 231, 0.94)
-        );
-
-      border: 1.5px solid rgba(255, 255, 255, 0.78);
-
-      box-shadow:
-        inset 0 3px 4px rgba(255, 255, 255, 0.5),
-        inset 0 -5px 12px rgba(20, 132, 194, 0.08),
-        0 25px 48px rgba(39, 151, 213, 0.18);
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      overflow: hidden;
-    }
-
-    .folder-front::before {
-      content: "";
-
-      position: absolute;
-      inset: 0;
-
-      background:
-        linear-gradient(
-          120deg,
-          rgba(255, 255, 255, 0.28),
-          rgba(255, 255, 255, 0.04) 38%,
-          rgba(255, 255, 255, 0.1) 72%,
-          rgba(255, 255, 255, 0.2)
-        );
-
-      pointer-events: none;
-    }
-
-    /* =========================
-       LYDIA'S PORTFOLIO STICKER
-    ========================= */
-
-    .portfolio-sticker {
-      position: relative;
-      z-index: 5;
-
-      width: 420px;
-      max-width: 90%;
-
-      filter:
-        drop-shadow(0 8px 0 rgba(205, 69, 139, 0.85))
-        drop-shadow(0 14px 7px rgba(49, 101, 143, 0.18));
-
-      pointer-events: none;
-    }
-
-    .portfolio-sticker svg {
-      display: block;
-      width: 100%;
-      height: auto;
-      overflow: visible;
-    }
-
-    /* =========================
-       SHADOW
-    ========================= */
-
-    .folder-shadow {
-      position: absolute;
-
-      left: 50%;
-      bottom: 8px;
-
-      width: 350px;
-      height: 45px;
-
-      transform: translateX(-50%);
-
-      border-radius: 50%;
-
-      background: rgba(63, 139, 194, 0.15);
-
-      filter: blur(18px);
-
-      z-index: 1;
-    }
-
-    /* =========================
-       SCROLL INDICATOR
-    ========================= */
-
-    .scroll-indicator {
-      position: absolute;
-
-      left: 50%;
-      bottom: 18px;
-
-      transform: translateX(-50%);
-
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-
-      color: #718096;
-
-      font-size: 11px;
-      letter-spacing: 0.04em;
-    }
-
-    .scroll-arrow {
-      font-size: 27px;
-      line-height: 1;
-      font-weight: 300;
-
-      animation: arrowFloat 1.8s ease-in-out infinite;
-    }
-
-    @keyframes arrowFloat {
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(6px);
-      }
-    }
-
-    /* =========================
-       RESPONSIVE
-    ========================= */
-
-    @media (max-width: 1000px) {
-      .nav {
-        gap: 28px;
-      }
-
-      .folder-scene {
-        transform: scale(0.88);
-      }
-    }
-
-    @media (max-width: 760px) {
-      .header {
-        height: 82px;
-        padding: 0 22px;
-      }
-
-      .nav {
-        display: none;
-      }
-
-      .connect-btn {
-        padding: 9px 16px;
-      }
-
-      .hero {
-        min-height: calc(100vh - 82px);
-      }
-
-      .folder-scene {
-        transform: scale(0.66);
-      }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Folio — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Baloo+2:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fcfcfd;
+    --ink:#1c2340;
+    --ink-soft:#6b7280;
+    --line:#eceef3;
+
+    --blue-1:#7FE3FB;   /* back folder — light cyan top */
+    --blue-2:#1EA6E6;   /* back folder — deep sky blue bottom */
+    --blue-tab:#5DD3F7;
+    --glass-1: rgba(255,255,255,.34);
+    --glass-2: rgba(120,215,255,.22);
+    --glass-border: rgba(255,255,255,.65);
+    --folder-shadow: rgba(8,88,148,.36);
+
+    --c1:#FFDFC7; /* peach */
+    --c1-deep:#F6B57E;
+    --c2:#D7F1E4; /* mint */
+    --c2-deep:#9BDFC0;
+    --c3:#E7E1FF; /* lavender - center */
+    --c3-deep:#B9A9FF;
+    --c4:#FFD9E8; /* blush */
+    --c4-deep:#F9A9C7;
+    --c5:#D8ECFF; /* sky */
+    --c5-deep:#9CC7FA;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    font-family:'Inter', sans-serif;
+    color:var(--ink);
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+
+  /* ---------- NAV ---------- */
+  .top-nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    max-width:1160px;
+    margin:0 auto;
+    padding:28px 40px 0;
+  }
+  .logo{
+    font-family:'Quicksand', sans-serif;
+    font-weight:700;
+    font-size:22px;
+    letter-spacing:.2px;
+    color:var(--ink);
+  }
+  .logo span{ color:var(--blue-2); }
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:36px;
+    list-style:none;
+    margin:0; padding:0;
+  }
+  .nav-links a{
+    text-decoration:none;
+    color:var(--ink-soft);
+    font-size:14.5px;
+    font-weight:500;
+    transition:color .2s ease;
+  }
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-cta{
+    border:1.5px solid var(--ink);
+    border-radius:999px;
+    padding:8px 20px;
+    font-size:14px;
+    font-weight:500;
+    color:var(--ink);
+    text-decoration:none;
+    transition: background .2s ease, color .2s ease, transform .2s ease;
+  }
+  .nav-cta:hover{ background:var(--ink); color:#fff; transform:translateY(-1px); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:calc(100vh - 90px);
+    padding:20px 20px 60px;
+  }
+
+  .folder-scene{
+    position:relative;
+    width:480px;
+    height:540px;
+    max-width:92vw;
+    transform: translateY(22px);
+  }
+
+  /* group that breathes gently */
+  .folder-assembly{
+    position:absolute;
+    inset:0;
+    animation: breathe 4.5s ease-in-out infinite;
+  }
+  .folder-scene:hover .folder-assembly{
+    animation-play-state: paused;
+  }
+  @keyframes breathe{
+    0%,100%{ transform: translateY(0px); }
+    50%{ transform: translateY(-7px); }
+  }
+
+  .folder-shadow{
+    position:absolute;
+    left:50%;
+    bottom:38px;
+    width:340px;
+    height:52px;
+    transform:translateX(-50%);
+    background: radial-gradient(ellipse at center, var(--folder-shadow) 0%, rgba(41,58,120,.12) 55%, rgba(41,58,120,0) 78%);
+    filter: blur(7px);
+    animation: shadow-pulse 4.5s ease-in-out infinite;
+    z-index:0;
+  }
+  @keyframes shadow-pulse{
+    0%,100%{ transform:translateX(-50%) scale(1); opacity:1; }
+    50%{ transform:translateX(-50%) scale(.92) translateY(3px); opacity:.72; }
+  }
+
+  /* ---------- FOLDER BACK (opaque) ---------- */
+  .folder-back{
+    position:absolute;
+    left:50%;
+    bottom:54px;
+    transform:translateX(-50%) scale(1);
+    width:348px;
+    height:232px;
+    border-radius:14px 24px 28px 28px;
+    background: linear-gradient(155deg, var(--blue-1), var(--blue-2));
+    box-shadow:
+      0 30px 50px -18px var(--folder-shadow),
+      inset 0 -14px 22px rgba(0,0,0,.10),
+      inset 0 2px 0 rgba(255,255,255,.18);
+    z-index:1;
+    opacity:1;
+    transition: transform .55s cubic-bezier(.2,1.1,.4,1), opacity .55s ease;
+    transform-origin:50% 100%;
+  }
+  .folder-back::before{
+    content:"";
+    position:absolute;
+    top:-22px;
+    left:20px;
+    width:136px;
+    height:29px;
+    background:linear-gradient(155deg, var(--blue-1), var(--blue-tab));
+    border-radius:14px 18px 0 0;
+  }
+  .folder-scene:hover .folder-back{
+    transform: translateX(-50%) scale(.91);
+    opacity:.88;
+  }
+
+  /* ---------- CARDS ---------- */
+  .card{
+    position:absolute;
+    left:50%;
+    transform-origin:50% 100%;
+    transition: transform .6s cubic-bezier(.2,1.15,.4,1), z-index 0s;
+    z-index:2;
+  }
+  .folder-scene:hover .card{ z-index:6; }
+
+  .card-inner{
+    width:100%;
+    height:100%;
+    border-radius:18px;
+    cursor:pointer;
+    border:2.5px solid rgba(255,255,255,.85);
+    box-shadow: 0 10px 20px rgba(20,60,110,.18);
+    transition: transform .28s cubic-bezier(.2,1.2,.4,1), box-shadow .28s ease;
+    position:relative;
+    overflow:hidden;
+  }
+  .card-inner:active{ transform: scale(.97); }
+
+  .folder-scene:hover .card-inner:hover{
+    transform: translateY(-10px) scale(1.07);
+    box-shadow: 0 22px 32px rgba(30,42,95,.30);
+  }
+
+  /* individual card geometry — closed (peek) + open (reference fan) states */
+  /* 只调整五个色块的尺寸、颜色、位置与堆叠关系；其余结构保持不变 */
+
+  /* 默认状态：五张方形卡片藏在文件夹后，只露出一点 */
+  .card-0{
+    width:148px; height:148px; bottom:126px;
+    transform: translate(calc(-50% - 54px), 20px) rotate(-5deg);
+  }
+  .card-0 .card-inner{ background:#FFD2C8; }
+
+  .card-1{
+    width:148px; height:148px; bottom:128px;
+    transform: translate(calc(-50% - 26px), 14px) rotate(-2deg);
+  }
+  .card-1 .card-inner{ background:#CFEFD8; }
+
+  .card-2{
+    width:148px; height:148px; bottom:132px;
+    transform: translate(-50%, 8px) rotate(1deg);
+  }
+  .card-2 .card-inner{ background:#D8D0FF; }
+
+  .card-3{
+    width:148px; height:148px; bottom:128px;
+    transform: translate(calc(-50% + 28px), 14px) rotate(3deg);
+  }
+  .card-3 .card-inner{ background:#FFD2E1; }
+
+  .card-4{
+    width:148px; height:148px; bottom:126px;
+    transform: translate(calc(-50% + 56px), 20px) rotate(6deg);
+  }
+  .card-4 .card-inner{ background:#D7F58A; }
+
+  /* Hover：复刻参考图的错杂堆叠关系
+     1号与3号稍压住2号；4号与5号从右侧稍压住3号 */
+  .folder-scene:hover .card-0{
+    transform: translate(calc(-50% - 205px), -72px) rotate(-17deg);
+    z-index:8;
+  }
+
+  .folder-scene:hover .card-1{
+    transform: translate(calc(-50% - 103px), -138px) rotate(-8deg);
+    z-index:6;
+  }
+
+  .folder-scene:hover .card-2{
+    transform: translate(calc(-50% - 6px), -174px) rotate(1deg);
+    z-index:7;
+  }
+
+  .folder-scene:hover .card-3{
+    transform: translate(calc(-50% + 82px), -132px) rotate(9deg);
+    z-index:9;
+  }
+
+  .folder-scene:hover .card-4{
+    transform: translate(calc(-50% + 168px), -72px) rotate(16deg);
+    z-index:10;
+  }
+
+  /* 方形卡片，保留参考图中的柔和圆角 */
+  .card-inner{
+    border-radius:24px;
+  }
+
+  /* ---------- FOLDER FRONT (frosted glass) ---------- */
+  .folder-front{
+    position:absolute;
+    left:50%;
+    bottom:54px;
+    transform:translateX(-50%) scale(1);
+    transform-origin:50% 100%;
+    width:312px;
+    height:156px;
+    border-radius:3px 3px 22px 22px;
+    background:
+      linear-gradient(155deg, rgba(255,255,255,.24) 0%, rgba(255,255,255,.06) 40%, rgba(90,205,250,.18) 100%);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border:1px solid rgba(255,255,255,.65);
+    border-top:none;
+    box-shadow:
+      0 24px 40px -14px var(--folder-shadow),
+      inset 0 1px 0 rgba(255,255,255,.6),
+      inset 0 0 24px rgba(255,255,255,.10);
+    overflow:hidden;
+    z-index:4;
+    transition: transform .55s cubic-bezier(.2,1.1,.4,1), opacity .55s ease;
+    pointer-events:none;
+  }
+  .folder-front::after{
+    content:"";
+    position:absolute;
+    top:0; left:-20%;
+    width:55%;
+    height:100%;
+    background:linear-gradient(120deg, rgba(255,255,255,.35) 0%, rgba(255,255,255,0) 70%);
+    transform:skewX(-14deg);
+  }
+  .folder-scene:hover .folder-front{
+    transform: translateX(-50%) translateY(10px) scale(.88);
+    opacity:.62;
+  }
+
+  /* ---------- STICKERS / LOGOS ON FOLDER ---------- */
+
+  .badge-logo{
+    position:absolute;
+    left:50%;
+    bottom:68px;
+    width:245px;
+    height:auto;
+    transform: translateX(-50%) rotate(-4deg);
+    transform-origin:50% 50%;
+    filter: drop-shadow(0 9px 0 rgba(130,128,145,.30));
+    z-index:5;
+    pointer-events:none;
+    transition: transform .5s cubic-bezier(.2,1.1,.4,1);
+  }
+  .folder-scene:hover .badge-logo{
+    transform: translateX(-50%) rotate(-2deg) translateY(-4px) scale(1.04);
+  }
+
+  /* ---------- HINT ARROW ---------- */
+  .hint-arrow{
+    position:absolute;
+    right:6px;
+    top:52%;
+    transform:translateY(-50%);
+    width:34px;
+    height:34px;
+    z-index:5;
+    animation: nudge 2.2s ease-in-out infinite;
+    opacity:.55;
+  }
+  .folder-scene:hover .hint-arrow{ opacity:0; }
+  @keyframes nudge{
+    0%,100%{ transform:translateY(-50%) translateX(0); opacity:.35; }
+    50%{ transform:translateY(-50%) translateX(8px); opacity:.75; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .folder-assembly, .folder-shadow, .hint-arrow{ animation:none !important; }
+    .card, .folder-front, .card-inner{ transition:none !important; }
+  }
+
+  @media (max-width: 560px){
+    .top-nav{ padding:22px 20px 0; }
+    .nav-links{ display:none; }
+    .folder-scene{ transform: scale(.82); }
+  }
+</style>
 </head>
-
 <body>
 
-  <div class="page">
+  <nav class="top-nav">
+    <div class="logo">folio<span>.</span></div>
+    <ul class="nav-links">
+      <li><a href="#work">作品</a></li>
+      <li><a href="#about">关于</a></li>
+      <li><a href="#contact">联系</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Get in touch</a>
+  </nav>
 
-    <!-- =========================
-         HEADER
-    ========================== -->
+  <main class="hero">
+    <div class="folder-scene" aria-label="悬停查看作品">
+      <div class="folder-shadow"></div>
 
-    <header class="header">
-
-      <div class="logo">
-        Lydia<span class="logo-dot">.</span>
-      </div>
-
-      <nav class="nav">
-        <a href="about-me/">About</a>
-        <a href="#">Projects</a>
-        <a href="#">Experience</a>
-        <a href="#">Contact</a>
-      </nav>
-
-      <a class="connect-btn" href="#">
-        <span>Let's Connect</span>
-        <span class="connect-arrow">→</span>
-      </a>
-
-    </header>
-
-
-    <!-- =========================
-         HERO
-    ========================== -->
-
-    <main class="hero">
-
-      <div class="folder-scene">
-
-        <!-- =========================
-             FIVE CLICKABLE CARDS
-
-             第一个已经连接 About Me。
-             后面四个以后只需要修改 href。
-        ========================== -->
-
-
-        <!-- CARD 1 — ABOUT ME -->
-
-        <a
-          class="card card-0"
-          href="about-me/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="About Lydia"
-        >
-          <div class="card-inner"></div>
-        </a>
-
-
-        <!-- CARD 2 -->
-
-        <a
-          class="card card-1"
-          href="https://www.example.com/project-2"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open project 2"
-        >
-          <div class="card-inner"></div>
-        </a>
-
-
-        <!-- CARD 3 -->
-
-        <a
-          class="card card-2"
-          href="https://www.example.com/project-3"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open project 3"
-        >
-          <div class="card-inner"></div>
-        </a>
-
-
-        <!-- CARD 4 -->
-
-        <a
-          class="card card-3"
-          href="https://www.example.com/project-4"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open project 4"
-        >
-          <div class="card-inner"></div>
-        </a>
-
-
-        <!-- CARD 5 -->
-
-        <a
-          class="card card-4"
-          href="https://www.example.com/project-5"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open project 5"
-        >
-          <div class="card-inner"></div>
-        </a>
-
-
-        <!-- =========================
-             FOLDER
-        ========================== -->
-
+      <div class="folder-assembly">
         <div class="folder-back"></div>
 
-        <div class="folder-front">
+        <!-- 五张作品卡：后续只需修改各自 href 即可更换跳转页面 -->
+        <a class="card card-0" href="about-me/" target="_blank" rel="noopener noreferrer" aria-label="About Lydia">
+          <div class="card-inner"></div>
+        </a>
+        <a class="card card-1" href="https://www.example.com/project-2" target="_blank" rel="noopener noreferrer" aria-label="Open project 2">
+          <div class="card-inner"></div>
+        </a>
+        <a class="card card-2" href="https://www.example.com/project-3" target="_blank" rel="noopener noreferrer" aria-label="Open project 3">
+          <div class="card-inner"></div>
+        </a>
+        <a class="card card-3" href="https://www.example.com/project-4" target="_blank" rel="noopener noreferrer" aria-label="Open project 4">
+          <div class="card-inner"></div>
+        </a>
+        <a class="card card-4" href="https://www.example.com/project-5" target="_blank" rel="noopener noreferrer" aria-label="Open project 5">
+          <div class="card-inner"></div>
+        </a>
 
-          <!-- Lydia's Portfolio sticker -->
-
-          <div class="portfolio-sticker">
-
-            <svg
-              viewBox="0 0 700 280"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-label="Lydia's Portfolio"
-            >
-
-              <defs>
-
-                <!-- dotted white texture -->
-
-                <pattern
-                  id="dots"
-                  width="12"
-                  height="12"
-                  patternUnits="userSpaceOnUse"
-                >
-                  <circle
-                    cx="3"
-                    cy="3"
-                    r="1.5"
-                    fill="#efb4d1"
-                    opacity="0.72"
-                  />
-                </pattern>
-
-              </defs>
-
-
-              <!-- =========================
-                   LYDIA'S
-              ========================== -->
-
-              <text
-                x="350"
-                y="115"
-                text-anchor="middle"
-                font-family="Brush Script MT, Segoe Script, cursive"
-                font-size="112"
-                font-weight="700"
-                stroke="#d93f91"
-                stroke-width="30"
-                stroke-linejoin="round"
-                paint-order="stroke"
-                fill="#ffffff"
-              >
-                Lydia's
-              </text>
-
-              <text
-                x="350"
-                y="115"
-                text-anchor="middle"
-                font-family="Brush Script MT, Segoe Script, cursive"
-                font-size="112"
-                font-weight="700"
-                stroke="#ff91c5"
-                stroke-width="18"
-                stroke-linejoin="round"
-                paint-order="stroke"
-                fill="url(#dots)"
-              >
-                Lydia's
-              </text>
-
-
-              <!-- =========================
-                   PORTFOLIO
-              ========================== -->
-
-              <text
-                x="350"
-                y="224"
-                text-anchor="middle"
-                font-family="Brush Script MT, Segoe Script, cursive"
-                font-size="102"
-                font-weight="700"
-                stroke="#d93f91"
-                stroke-width="30"
-                stroke-linejoin="round"
-                paint-order="stroke"
-                fill="#ffffff"
-              >
-                Portfolio
-              </text>
-
-              <text
-                x="350"
-                y="224"
-                text-anchor="middle"
-                font-family="Brush Script MT, Segoe Script, cursive"
-                font-size="102"
-                font-weight="700"
-                stroke="#ff91c5"
-                stroke-width="18"
-                stroke-linejoin="round"
-                paint-order="stroke"
-                fill="url(#dots)"
-              >
-                Portfolio
-              </text>
-
-
-              <!-- =========================
-                   LEFT STAR
-              ========================== -->
-
-              <path
-                d="
-                  M67 153
-                  C75 134 80 130 98 123
-                  C80 116 75 111 67 92
-                  C59 111 54 116 36 123
-                  C54 130 59 134 67 153
-                  Z
-                "
-                fill="#ffffff"
-                stroke="#d93f91"
-                stroke-width="18"
-                stroke-linejoin="round"
-              />
-
-              <path
-                d="
-                  M67 147
-                  C74 132 79 127 93 123
-                  C79 118 74 114 67 99
-                  C60 114 55 118 41 123
-                  C55 127 60 132 67 147
-                  Z
-                "
-                fill="#ffffff"
-                stroke="#ff91c5"
-                stroke-width="10"
-                stroke-linejoin="round"
-              />
-
-
-              <!-- =========================
-                   RIGHT STAR
-              ========================== -->
-
-              <path
-                d="
-                  M630 150
-                  C638 132 643 127 660 120
-                  C643 114 638 109 630 91
-                  C622 109 617 114 600 120
-                  C617 127 622 132 630 150
-                  Z
-                "
-                fill="#ffffff"
-                stroke="#d93f91"
-                stroke-width="18"
-                stroke-linejoin="round"
-              />
-
-              <path
-                d="
-                  M630 144
-                  C637 130 642 125 655 120
-                  C642 116 637 111 630 98
-                  C623 111 618 116 605 120
-                  C618 125 623 130 630 144
-                  Z
-                "
-                fill="#ffffff"
-                stroke="#ff91c5"
-                stroke-width="10"
-                stroke-linejoin="round"
-              />
-
-            </svg>
-
-          </div>
-
-        </div>
-
-
-        <!-- folder shadow -->
-
-        <div class="folder-shadow"></div>
-
+        <div class="folder-front"></div>
+        <svg class="badge-logo" viewBox="0 0 430 185" xmlns="http://www.w3.org/2000/svg" aria-label="Lydia's Portfolio sticker">
+          <defs>
+            <pattern id="dots" width="8" height="8" patternUnits="userSpaceOnUse">
+              <rect width="8" height="8" fill="#FFFDFE"/>
+              <circle cx="2" cy="2" r="1.15" fill="#F3A7C4" opacity=".8"/>
+            </pattern>
+          </defs>
+          <!-- chunky shadow -->
+          <text x="215" y="82" text-anchor="middle" style="font-family:'Baloo 2','Arial Rounded MT Bold',sans-serif;font-weight:800;font-size:72px;letter-spacing:-2px" fill="#B9B8C1" stroke="#B9B8C1" stroke-width="18" stroke-linejoin="round">Lydia's</text>
+          <text x="215" y="148" text-anchor="middle" style="font-family:'Baloo 2','Arial Rounded MT Bold',sans-serif;font-weight:800;font-size:64px;letter-spacing:-2px" fill="#B9B8C1" stroke="#B9B8C1" stroke-width="18" stroke-linejoin="round">Portfolio</text>
+          <!-- hot-pink outer sticker border -->
+          <text x="215" y="72" text-anchor="middle" style="font-family:'Baloo 2','Arial Rounded MT Bold',sans-serif;font-weight:800;font-size:72px;letter-spacing:-2px" fill="url(#dots)" stroke="#EC3D88" stroke-width="18" stroke-linejoin="round" paint-order="stroke fill">Lydia's</text>
+          <text x="215" y="138" text-anchor="middle" style="font-family:'Baloo 2','Arial Rounded MT Bold',sans-serif;font-weight:800;font-size:64px;letter-spacing:-2px" fill="url(#dots)" stroke="#EC3D88" stroke-width="18" stroke-linejoin="round" paint-order="stroke fill">Portfolio</text>
+          <!-- lighter inner pink rim -->
+          <text x="215" y="72" text-anchor="middle" style="font-family:'Baloo 2','Arial Rounded MT Bold',sans-serif;font-weight:800;font-size:72px;letter-spacing:-2px" fill="url(#dots)" stroke="#FF82B7" stroke-width="8" stroke-linejoin="round" paint-order="stroke fill">Lydia's</text>
+          <text x="215" y="138" text-anchor="middle" style="font-family:'Baloo 2','Arial Rounded MT Bold',sans-serif;font-weight:800;font-size:64px;letter-spacing:-2px" fill="url(#dots)" stroke="#FF82B7" stroke-width="8" stroke-linejoin="round" paint-order="stroke fill">Portfolio</text>
+          <!-- decorative stars -->
+          <path d="M34 25 L41 40 L57 43 L45 54 L48 70 L34 62 L20 70 L23 54 L11 43 L27 40 Z" fill="url(#dots)" stroke="#EC3D88" stroke-width="9" stroke-linejoin="round"/>
+          <path d="M394 18 L401 33 L417 36 L405 47 L408 63 L394 55 L380 63 L383 47 L371 36 L387 33 Z" fill="url(#dots)" stroke="#EC3D88" stroke-width="9" stroke-linejoin="round"/>
+        </svg>
       </div>
 
-
-      <!-- =========================
-           SCROLL
-      ========================== -->
-
-      <div class="scroll-indicator">
-        <span>SCROLL</span>
-        <span class="scroll-arrow">↓</span>
-      </div>
-
-    </main>
-
-  </div>
-
+      <svg class="hint-arrow" viewBox="0 0 24 24" fill="none">
+        <path d="M6 4L14 12L6 20" stroke="#3457C4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </main>
 
   <script>
-
-    /*
-      卡片目前已经通过 <a> 标签实现真实页面跳转。
-
-      后续你只需要修改对应卡片的 href：
-
-      CARD 1:
-      href="about-me/"
-
-      CARD 2:
-      href="你的第二个页面"
-
-      CARD 3:
-      href="你的第三个页面"
-
-      CARD 4:
-      href="你的第四个页面"
-
-      CARD 5:
-      href="你的第五个页面"
-    */
-
-    const cards = document.querySelectorAll(".card");
-
-    cards.forEach((card) => {
-
-      card.addEventListener("mousedown", () => {
-        card.style.transition =
-          "transform 0.12s ease, filter 0.12s ease";
+    // small click feedback on cards — visual pop only, no navigation target defined yet
+    document.querySelectorAll('.card-inner').forEach(function(card){
+      card.addEventListener('click', function(){
+        card.style.transform = 'translateY(-10px) scale(.95)';
+        setTimeout(function(){ card.style.transform = ''; }, 140);
       });
-
-      card.addEventListener("mouseup", () => {
-        card.style.transition = "";
-      });
-
-      card.addEventListener("mouseleave", () => {
-        card.style.transition = "";
-      });
-
     });
-
   </script>
 
 </body>

@@ -4,9 +4,11 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Folio — Portfolio</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Baloo+2:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
 <style>
   :root{
     --bg:#fcfcfd;
@@ -14,28 +16,36 @@
     --ink-soft:#6b7280;
     --line:#eceef3;
 
-    --blue-1:#7FE3FB;   /* back folder — light cyan top */
-    --blue-2:#1EA6E6;   /* back folder — deep sky blue bottom */
+    --blue-1:#7FE3FB;
+    --blue-2:#1EA6E6;
     --blue-tab:#5DD3F7;
-    --glass-1: rgba(255,255,255,.34);
-    --glass-2: rgba(120,215,255,.22);
-    --glass-border: rgba(255,255,255,.65);
-    --folder-shadow: rgba(8,88,148,.36);
+    --glass-1:rgba(255,255,255,.34);
+    --glass-2:rgba(120,215,255,.22);
+    --glass-border:rgba(255,255,255,.65);
+    --folder-shadow:rgba(8,88,148,.36);
 
-    --c1:#FFDFC7; /* peach */
+    --c1:#FFDFC7;
     --c1-deep:#F6B57E;
-    --c2:#D7F1E4; /* mint */
+    --c2:#D7F1E4;
     --c2-deep:#9BDFC0;
-    --c3:#E7E1FF; /* lavender - center */
+    --c3:#E7E1FF;
     --c3-deep:#B9A9FF;
-    --c4:#FFD9E8; /* blush */
+    --c4:#FFD9E8;
     --c4-deep:#F9A9C7;
-    --c5:#D8ECFF; /* sky */
+    --c5:#D8ECFF;
     --c5-deep:#9CC7FA;
   }
 
-  *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
+  *{
+    box-sizing:border-box;
+  }
+
+  html,
+  body{
+    margin:0;
+    padding:0;
+  }
+
   body{
     background:var(--bg);
     font-family:'Inter', sans-serif;
@@ -45,6 +55,7 @@
   }
 
   /* ---------- NAV ---------- */
+
   .top-nav{
     display:flex;
     align-items:center;
@@ -53,6 +64,7 @@
     margin:0 auto;
     padding:28px 40px 0;
   }
+
   .logo{
     font-family:'Quicksand', sans-serif;
     font-weight:700;
@@ -60,14 +72,20 @@
     letter-spacing:.2px;
     color:var(--ink);
   }
-  .logo span{ color:var(--blue-2); }
+
+  .logo span{
+    color:var(--blue-2);
+  }
+
   .nav-links{
     display:flex;
     align-items:center;
     gap:36px;
     list-style:none;
-    margin:0; padding:0;
+    margin:0;
+    padding:0;
   }
+
   .nav-links a{
     text-decoration:none;
     color:var(--ink-soft);
@@ -75,7 +93,11 @@
     font-weight:500;
     transition:color .2s ease;
   }
-  .nav-links a:hover{ color:var(--ink); }
+
+  .nav-links a:hover{
+    color:var(--ink);
+  }
+
   .nav-cta{
     border:1.5px solid var(--ink);
     border-radius:999px;
@@ -84,11 +106,20 @@
     font-weight:500;
     color:var(--ink);
     text-decoration:none;
-    transition: background .2s ease, color .2s ease, transform .2s ease;
+    transition:
+      background .2s ease,
+      color .2s ease,
+      transform .2s ease;
   }
-  .nav-cta:hover{ background:var(--ink); color:#fff; transform:translateY(-1px); }
+
+  .nav-cta:hover{
+    background:var(--ink);
+    color:#fff;
+    transform:translateY(-1px);
+  }
 
   /* ---------- HERO ---------- */
+
   .hero{
     display:flex;
     align-items:center;
@@ -102,21 +133,28 @@
     width:480px;
     height:540px;
     max-width:92vw;
-    transform: translateY(22px);
+    transform:translateY(22px);
   }
 
   /* group that breathes gently */
+
   .folder-assembly{
     position:absolute;
     inset:0;
-    animation: breathe 4.5s ease-in-out infinite;
+    animation:breathe 4.5s ease-in-out infinite;
   }
+
   .folder-scene:hover .folder-assembly{
-    animation-play-state: paused;
+    animation-play-state:paused;
   }
+
   @keyframes breathe{
-    0%,100%{ transform: translateY(0px); }
-    50%{ transform: translateY(-7px); }
+    0%,100%{
+      transform:translateY(0px);
+    }
+    50%{
+      transform:translateY(-7px);
+    }
   }
 
   .folder-shadow{
@@ -126,17 +164,32 @@
     width:340px;
     height:52px;
     transform:translateX(-50%);
-    background: radial-gradient(ellipse at center, var(--folder-shadow) 0%, rgba(41,58,120,.12) 55%, rgba(41,58,120,0) 78%);
-    filter: blur(7px);
-    animation: shadow-pulse 4.5s ease-in-out infinite;
+    background:
+      radial-gradient(
+        ellipse at center,
+        var(--folder-shadow) 0%,
+        rgba(41,58,120,.12) 55%,
+        rgba(41,58,120,0) 78%
+      );
+    filter:blur(7px);
+    animation:shadow-pulse 4.5s ease-in-out infinite;
     z-index:0;
   }
+
   @keyframes shadow-pulse{
-    0%,100%{ transform:translateX(-50%) scale(1); opacity:1; }
-    50%{ transform:translateX(-50%) scale(.92) translateY(3px); opacity:.72; }
+    0%,100%{
+      transform:translateX(-50%) scale(1);
+      opacity:1;
+    }
+
+    50%{
+      transform:translateX(-50%) scale(.92) translateY(3px);
+      opacity:.72;
+    }
   }
 
-  /* ---------- FOLDER BACK (opaque) ---------- */
+  /* ---------- FOLDER BACK ---------- */
+
   .folder-back{
     position:absolute;
     left:50%;
@@ -145,16 +198,23 @@
     width:348px;
     height:232px;
     border-radius:14px 24px 28px 28px;
-    background: linear-gradient(155deg, var(--blue-1), var(--blue-2));
+    background:linear-gradient(
+      155deg,
+      var(--blue-1),
+      var(--blue-2)
+    );
     box-shadow:
       0 30px 50px -18px var(--folder-shadow),
       inset 0 -14px 22px rgba(0,0,0,.10),
       inset 0 2px 0 rgba(255,255,255,.18);
     z-index:1;
     opacity:1;
-    transition: transform .55s cubic-bezier(.2,1.1,.4,1), opacity .55s ease;
+    transition:
+      transform .55s cubic-bezier(.2,1.1,.4,1),
+      opacity .55s ease;
     transform-origin:50% 100%;
   }
+
   .folder-back::before{
     content:"";
     position:absolute;
@@ -162,109 +222,164 @@
     left:20px;
     width:136px;
     height:29px;
-    background:linear-gradient(155deg, var(--blue-1), var(--blue-tab));
+    background:linear-gradient(
+      155deg,
+      var(--blue-1),
+      var(--blue-tab)
+    );
     border-radius:14px 18px 0 0;
   }
+
   .folder-scene:hover .folder-back{
-    transform: translateX(-50%) scale(.91);
+    transform:translateX(-50%) scale(.91);
     opacity:.88;
   }
 
   /* ---------- CARDS ---------- */
+
   .card{
     position:absolute;
     left:50%;
     transform-origin:50% 100%;
-    transition: transform .6s cubic-bezier(.2,1.15,.4,1), z-index 0s;
+    transition:
+      transform .6s cubic-bezier(.2,1.15,.4,1),
+      z-index 0s;
     z-index:2;
   }
-  .folder-scene:hover .card{ z-index:6; }
+
+  .folder-scene:hover .card{
+    z-index:6;
+  }
 
   .card-inner{
     width:100%;
     height:100%;
-    border-radius:18px;
+    border-radius:24px;
     cursor:pointer;
     border:2.5px solid rgba(255,255,255,.85);
-    box-shadow: 0 10px 20px rgba(20,60,110,.18);
-    transition: transform .28s cubic-bezier(.2,1.2,.4,1), box-shadow .28s ease;
+    box-shadow:0 10px 20px rgba(20,60,110,.18);
+    transition:
+      transform .28s cubic-bezier(.2,1.2,.4,1),
+      box-shadow .28s ease;
     position:relative;
     overflow:hidden;
   }
-  .card-inner:active{ transform: scale(.97); }
+
+  .card-inner:active{
+    transform:scale(.97);
+  }
 
   .folder-scene:hover .card-inner:hover{
-    transform: translateY(-10px) scale(1.07);
-    box-shadow: 0 22px 32px rgba(30,42,95,.30);
+    transform:translateY(-10px) scale(1.07);
+    box-shadow:0 22px 32px rgba(30,42,95,.30);
   }
 
-  /* individual card geometry — closed (peek) + open (reference fan) states */
-  /* 只调整五个色块的尺寸、颜色、位置与堆叠关系；其余结构保持不变 */
+  /* ---------- CARD POSITIONS ---------- */
 
-  /* 默认状态：五张方形卡片藏在文件夹后，只露出一点 */
   .card-0{
-    width:148px; height:148px; bottom:126px;
-    transform: translate(calc(-50% - 54px), 20px) rotate(-5deg);
+    width:148px;
+    height:148px;
+    bottom:126px;
+    transform:
+      translate(calc(-50% - 54px), 20px)
+      rotate(-5deg);
   }
-  .card-0 .card-inner{ background:#FFD2C8; }
+
+  .card-0 .card-inner{
+    background:#FFD2C8;
+  }
 
   .card-1{
-    width:148px; height:148px; bottom:128px;
-    transform: translate(calc(-50% - 26px), 14px) rotate(-2deg);
+    width:148px;
+    height:148px;
+    bottom:128px;
+    transform:
+      translate(calc(-50% - 26px), 14px)
+      rotate(-2deg);
   }
-  .card-1 .card-inner{ background:#CFEFD8; }
+
+  .card-1 .card-inner{
+    background:#CFEFD8;
+  }
 
   .card-2{
-    width:148px; height:148px; bottom:132px;
-    transform: translate(-50%, 8px) rotate(1deg);
+    width:148px;
+    height:148px;
+    bottom:132px;
+    transform:
+      translate(-50%, 8px)
+      rotate(1deg);
   }
-  .card-2 .card-inner{ background:#D8D0FF; }
+
+  .card-2 .card-inner{
+    background:#D8D0FF;
+  }
 
   .card-3{
-    width:148px; height:148px; bottom:128px;
-    transform: translate(calc(-50% + 28px), 14px) rotate(3deg);
+    width:148px;
+    height:148px;
+    bottom:128px;
+    transform:
+      translate(calc(-50% + 28px), 14px)
+      rotate(3deg);
   }
-  .card-3 .card-inner{ background:#FFD2E1; }
+
+  .card-3 .card-inner{
+    background:#FFD2E1;
+  }
 
   .card-4{
-    width:148px; height:148px; bottom:126px;
-    transform: translate(calc(-50% + 56px), 20px) rotate(6deg);
+    width:148px;
+    height:148px;
+    bottom:126px;
+    transform:
+      translate(calc(-50% + 56px), 20px)
+      rotate(6deg);
   }
-  .card-4 .card-inner{ background:#D7F58A; }
 
-  /* Hover：复刻参考图的错杂堆叠关系
-     1号与3号稍压住2号；4号与5号从右侧稍压住3号 */
+  .card-4 .card-inner{
+    background:#D7F58A;
+  }
+
+  /* ---------- CARD HOVER FAN ---------- */
+
   .folder-scene:hover .card-0{
-    transform: translate(calc(-50% - 205px), -72px) rotate(-17deg);
+    transform:
+      translate(calc(-50% - 205px), -72px)
+      rotate(-17deg);
     z-index:8;
   }
 
   .folder-scene:hover .card-1{
-    transform: translate(calc(-50% - 103px), -138px) rotate(-8deg);
+    transform:
+      translate(calc(-50% - 103px), -138px)
+      rotate(-8deg);
     z-index:6;
   }
 
   .folder-scene:hover .card-2{
-    transform: translate(calc(-50% - 6px), -174px) rotate(1deg);
+    transform:
+      translate(calc(-50% - 6px), -174px)
+      rotate(1deg);
     z-index:7;
   }
 
   .folder-scene:hover .card-3{
-    transform: translate(calc(-50% + 82px), -132px) rotate(9deg);
+    transform:
+      translate(calc(-50% + 82px), -132px)
+      rotate(9deg);
     z-index:9;
   }
 
   .folder-scene:hover .card-4{
-    transform: translate(calc(-50% + 168px), -72px) rotate(16deg);
+    transform:
+      translate(calc(-50% + 168px), -72px)
+      rotate(16deg);
     z-index:10;
   }
 
-  /* 方形卡片，保留参考图中的柔和圆角 */
-  .card-inner{
-    border-radius:24px;
-  }
+  /* ---------- FOLDER FRONT ---------- */
 
-  /* ---------- FOLDER FRONT (frosted glass) ---------- */
   .folder-front{
     position:absolute;
     left:50%;
@@ -274,36 +389,61 @@
     width:312px;
     height:156px;
     border-radius:3px 3px 22px 22px;
+
     background:
-      linear-gradient(155deg, rgba(255,255,255,.24) 0%, rgba(255,255,255,.06) 40%, rgba(90,205,250,.18) 100%);
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
+      linear-gradient(
+        155deg,
+        rgba(255,255,255,.24) 0%,
+        rgba(255,255,255,.06) 40%,
+        rgba(90,205,250,.18) 100%
+      );
+
+    backdrop-filter:blur(16px) saturate(180%);
+    -webkit-backdrop-filter:blur(16px) saturate(180%);
+
     border:1px solid rgba(255,255,255,.65);
     border-top:none;
+
     box-shadow:
       0 24px 40px -14px var(--folder-shadow),
       inset 0 1px 0 rgba(255,255,255,.6),
       inset 0 0 24px rgba(255,255,255,.10);
+
     overflow:hidden;
     z-index:4;
-    transition: transform .55s cubic-bezier(.2,1.1,.4,1), opacity .55s ease;
+
+    transition:
+      transform .55s cubic-bezier(.2,1.1,.4,1),
+      opacity .55s ease;
+
     pointer-events:none;
   }
+
   .folder-front::after{
     content:"";
     position:absolute;
-    top:0; left:-20%;
+    top:0;
+    left:-20%;
     width:55%;
     height:100%;
-    background:linear-gradient(120deg, rgba(255,255,255,.35) 0%, rgba(255,255,255,0) 70%);
+    background:
+      linear-gradient(
+        120deg,
+        rgba(255,255,255,.35) 0%,
+        rgba(255,255,255,0) 70%
+      );
     transform:skewX(-14deg);
   }
+
   .folder-scene:hover .folder-front{
-    transform: translateX(-50%) translateY(10px) scale(.88);
+    transform:
+      translateX(-50%)
+      translateY(10px)
+      scale(.88);
     opacity:.62;
   }
 
-  /* ---------- STICKERS / LOGOS ON FOLDER ---------- */
+  /* ---------- LYDIA'S PORTFOLIO LOGO ---------- */
 
   .badge-logo{
     position:absolute;
@@ -311,18 +451,30 @@
     bottom:68px;
     width:245px;
     height:auto;
-    transform: translateX(-50%) rotate(-4deg);
+    transform:
+      translateX(-50%)
+      rotate(-4deg);
     transform-origin:50% 50%;
-    filter: drop-shadow(0 9px 0 rgba(130,128,145,.30));
+    filter:
+      drop-shadow(
+        0 9px 0 rgba(130,128,145,.30)
+      );
     z-index:5;
     pointer-events:none;
-    transition: transform .5s cubic-bezier(.2,1.1,.4,1);
+    transition:
+      transform .5s cubic-bezier(.2,1.1,.4,1);
   }
+
   .folder-scene:hover .badge-logo{
-    transform: translateX(-50%) rotate(-2deg) translateY(-4px) scale(1.04);
+    transform:
+      translateX(-50%)
+      rotate(-2deg)
+      translateY(-4px)
+      scale(1.04);
   }
 
   /* ---------- HINT ARROW ---------- */
+
   .hint-arrow{
     position:absolute;
     right:6px;
@@ -331,114 +483,444 @@
     width:34px;
     height:34px;
     z-index:5;
-    animation: nudge 2.2s ease-in-out infinite;
+    animation:nudge 2.2s ease-in-out infinite;
     opacity:.55;
   }
-  .folder-scene:hover .hint-arrow{ opacity:0; }
+
+  .folder-scene:hover .hint-arrow{
+    opacity:0;
+  }
+
   @keyframes nudge{
-    0%,100%{ transform:translateY(-50%) translateX(0); opacity:.35; }
-    50%{ transform:translateY(-50%) translateX(8px); opacity:.75; }
+    0%,100%{
+      transform:
+        translateY(-50%)
+        translateX(0);
+      opacity:.35;
+    }
+
+    50%{
+      transform:
+        translateY(-50%)
+        translateX(8px);
+      opacity:.75;
+    }
   }
 
   @media (prefers-reduced-motion: reduce){
-    .folder-assembly, .folder-shadow, .hint-arrow{ animation:none !important; }
-    .card, .folder-front, .card-inner{ transition:none !important; }
+    .folder-assembly,
+    .folder-shadow,
+    .hint-arrow{
+      animation:none !important;
+    }
+
+    .card,
+    .folder-front,
+    .card-inner{
+      transition:none !important;
+    }
   }
 
-  @media (max-width: 560px){
-    .top-nav{ padding:22px 20px 0; }
-    .nav-links{ display:none; }
-    .folder-scene{ transform: scale(.82); }
+  @media (max-width:560px){
+    .top-nav{
+      padding:22px 20px 0;
+    }
+
+    .nav-links{
+      display:none;
+    }
+
+    .folder-scene{
+      transform:scale(.82);
+    }
   }
 </style>
 </head>
+
 <body>
 
   <nav class="top-nav">
-    <div class="logo">folio<span>.</span></div>
+
+    <div class="logo">
+      folio<span>.</span>
+    </div>
+
     <ul class="nav-links">
-      <li><a href="#work">作品</a></li>
-      <li><a href="#about">关于</a></li>
-      <li><a href="#contact">联系</a></li>
+      <li>
+        <a href="#work">作品</a>
+      </li>
+
+      <li>
+        <a href="#about">关于</a>
+      </li>
+
+      <li>
+        <a href="#contact">联系</a>
+      </li>
     </ul>
-    <a class="nav-cta" href="#contact">Get in touch</a>
+
+    <a
+      class="nav-cta"
+      href="#contact"
+    >
+      Get in touch
+    </a>
+
   </nav>
 
   <main class="hero">
-    <div class="folder-scene" aria-label="悬停查看作品">
+
+    <div
+      class="folder-scene"
+      aria-label="悬停查看作品"
+    >
+
       <div class="folder-shadow"></div>
 
       <div class="folder-assembly">
+
         <div class="folder-back"></div>
 
-        <!-- 五张作品卡：后续只需修改各自 href 即可更换跳转页面 -->
 
-        <a class="card card-0" href="about-me/" target="_blank" rel="noopener noreferrer" aria-label="About Lydia">
+        <!-- =====================================================
+             CARD 1
+             About Me
+             ===================================================== -->
+
+        <a
+          class="card card-0"
+          href="about-me/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="About Lydia"
+        >
           <div class="card-inner"></div>
         </a>
 
-        <a class="card card-1" href="project-2/" target="_blank" rel="noopener noreferrer" aria-label="Social Media Landscape">
+
+        <!-- =====================================================
+             CARD 2
+             Social Media Landscape
+             ===================================================== -->
+
+        <a
+          class="card card-1"
+          href="project-2/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open project 2"
+        >
           <div class="card-inner"></div>
         </a>
 
-        <a class="card card-2" href="https://www.example.com/project-3" target="_blank" rel="noopener noreferrer" aria-label="Open project 3">
+
+        <!-- =====================================================
+             CARD 3
+             Content Output
+             ===================================================== -->
+
+        <a
+          class="card card-2"
+          href="project-3/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open project 3"
+        >
           <div class="card-inner"></div>
         </a>
 
-        <a class="card card-3" href="https://www.example.com/project-4" target="_blank" rel="noopener noreferrer" aria-label="Open project 4">
+
+        <!-- =====================================================
+             CARD 4
+             暂时保留占位链接
+             ===================================================== -->
+
+        <a
+          class="card card-3"
+          href="https://www.example.com/project-4"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open project 4"
+        >
           <div class="card-inner"></div>
         </a>
 
-        <a class="card card-4" href="https://www.example.com/project-5" target="_blank" rel="noopener noreferrer" aria-label="Open project 5">
+
+        <!-- =====================================================
+             CARD 5
+             暂时保留占位链接
+             ===================================================== -->
+
+        <a
+          class="card card-4"
+          href="https://www.example.com/project-5"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open project 5"
+        >
           <div class="card-inner"></div>
         </a>
+
 
         <div class="folder-front"></div>
 
-        <svg class="badge-logo" viewBox="0 0 430 185" xmlns="http://www.w3.org/2000/svg" aria-label="Lydia's Portfolio sticker">
+
+        <!-- Lydia's Portfolio sticker -->
+
+        <svg
+          class="badge-logo"
+          viewBox="0 0 430 185"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-label="Lydia's Portfolio sticker"
+        >
+
           <defs>
-            <pattern id="dots" width="8" height="8" patternUnits="userSpaceOnUse">
-              <rect width="8" height="8" fill="#FFFDFE"/>
-              <circle cx="2" cy="2" r="1.15" fill="#F3A7C4" opacity=".8"/>
+
+            <pattern
+              id="dots"
+              width="8"
+              height="8"
+              patternUnits="userSpaceOnUse"
+            >
+              <rect
+                width="8"
+                height="8"
+                fill="#FFFDFE"
+              />
+
+              <circle
+                cx="2"
+                cy="2"
+                r="1.15"
+                fill="#F3A7C4"
+                opacity=".8"
+              />
             </pattern>
+
           </defs>
 
-          <!-- chunky shadow -->
-          <text x="215" y="82" text-anchor="middle" style="font-family:'Baloo 2','Arial Rounded MT Bold',sans-serif;font-weight:800;font-size:72px;letter-spacing:-2px" fill="#B9B8C1" stroke="#B9B8C1" stroke-width="18" stroke-linejoin="round">Lydia's</text>
 
-          <text x="215" y="148" text-anchor="middle" style="font-family:'Baloo 2','Arial Rounded MT Bold',sans-serif;font-weight:800;font-size:64px;letter-spacing:-2px" fill="#B9B8C1" stroke="#B9B8C1" stroke-width="18" stroke-linejoin="round">Portfolio</text>
+          <!-- chunky shadow -->
+
+          <text
+            x="215"
+            y="82"
+            text-anchor="middle"
+            style="
+              font-family:'Baloo 2','Arial Rounded MT Bold',sans-serif;
+              font-weight:800;
+              font-size:72px;
+              letter-spacing:-2px
+            "
+            fill="#B9B8C1"
+            stroke="#B9B8C1"
+            stroke-width="18"
+            stroke-linejoin="round"
+          >
+            Lydia's
+          </text>
+
+
+          <text
+            x="215"
+            y="148"
+            text-anchor="middle"
+            style="
+              font-family:'Baloo 2','Arial Rounded MT Bold',sans-serif;
+              font-weight:800;
+              font-size:64px;
+              letter-spacing:-2px
+            "
+            fill="#B9B8C1"
+            stroke="#B9B8C1"
+            stroke-width="18"
+            stroke-linejoin="round"
+          >
+            Portfolio
+          </text>
+
 
           <!-- hot-pink outer sticker border -->
-          <text x="215" y="72" text-anchor="middle" style="font-family:'Baloo 2','Arial Rounded MT Bold',sans-serif;font-weight:800;font-size:72px;letter-spacing:-2px" fill="url(#dots)" stroke="#EC3D88" stroke-width="18" stroke-linejoin="round" paint-order="stroke fill">Lydia's</text>
 
-          <text x="215" y="138" text-anchor="middle" style="font-family:'Baloo 2','Arial Rounded MT Bold',sans-serif;font-weight:800;font-size:64px;letter-spacing:-2px" fill="url(#dots)" stroke="#EC3D88" stroke-width="18" stroke-linejoin="round" paint-order="stroke fill">Portfolio</text>
+          <text
+            x="215"
+            y="72"
+            text-anchor="middle"
+            style="
+              font-family:'Baloo 2','Arial Rounded MT Bold',sans-serif;
+              font-weight:800;
+              font-size:72px;
+              letter-spacing:-2px
+            "
+            fill="url(#dots)"
+            stroke="#EC3D88"
+            stroke-width="18"
+            stroke-linejoin="round"
+            paint-order="stroke fill"
+          >
+            Lydia's
+          </text>
+
+
+          <text
+            x="215"
+            y="138"
+            text-anchor="middle"
+            style="
+              font-family:'Baloo 2','Arial Rounded MT Bold',sans-serif;
+              font-weight:800;
+              font-size:64px;
+              letter-spacing:-2px
+            "
+            fill="url(#dots)"
+            stroke="#EC3D88"
+            stroke-width="18"
+            stroke-linejoin="round"
+            paint-order="stroke fill"
+          >
+            Portfolio
+          </text>
+
 
           <!-- lighter inner pink rim -->
-          <text x="215" y="72" text-anchor="middle" style="font-family:'Baloo 2','Arial Rounded MT Bold',sans-serif;font-weight:800;font-size:72px;letter-spacing:-2px" fill="url(#dots)" stroke="#FF82B7" stroke-width="8" stroke-linejoin="round" paint-order="stroke fill">Lydia's</text>
 
-          <text x="215" y="138" text-anchor="middle" style="font-family:'Baloo 2','Arial Rounded MT Bold',sans-serif;font-weight:800;font-size:64px;letter-spacing:-2px" fill="url(#dots)" stroke="#FF82B7" stroke-width="8" stroke-linejoin="round" paint-order="stroke fill">Portfolio</text>
+          <text
+            x="215"
+            y="72"
+            text-anchor="middle"
+            style="
+              font-family:'Baloo 2','Arial Rounded MT Bold',sans-serif;
+              font-weight:800;
+              font-size:72px;
+              letter-spacing:-2px
+            "
+            fill="url(#dots)"
+            stroke="#FF82B7"
+            stroke-width="8"
+            stroke-linejoin="round"
+            paint-order="stroke fill"
+          >
+            Lydia's
+          </text>
+
+
+          <text
+            x="215"
+            y="138"
+            text-anchor="middle"
+            style="
+              font-family:'Baloo 2','Arial Rounded MT Bold',sans-serif;
+              font-weight:800;
+              font-size:64px;
+              letter-spacing:-2px
+            "
+            fill="url(#dots)"
+            stroke="#FF82B7"
+            stroke-width="8"
+            stroke-linejoin="round"
+            paint-order="stroke fill"
+          >
+            Portfolio
+          </text>
+
 
           <!-- decorative stars -->
-          <path d="M34 25 L41 40 L57 43 L45 54 L48 70 L34 62 L20 70 L23 54 L11 43 L27 40 Z" fill="url(#dots)" stroke="#EC3D88" stroke-width="9" stroke-linejoin="round"/>
 
-          <path d="M394 18 L401 33 L417 36 L405 47 L408 63 L394 55 L380 63 L383 47 L371 36 L387 33 Z" fill="url(#dots)" stroke="#EC3D88" stroke-width="9" stroke-linejoin="round"/>
+          <path
+            d="
+              M34 25
+              L41 40
+              L57 43
+              L45 54
+              L48 70
+              L34 62
+              L20 70
+              L23 54
+              L11 43
+              L27 40
+              Z
+            "
+            fill="url(#dots)"
+            stroke="#EC3D88"
+            stroke-width="9"
+            stroke-linejoin="round"
+          />
+
+
+          <path
+            d="
+              M394 18
+              L401 33
+              L417 36
+              L405 47
+              L408 63
+              L394 55
+              L380 63
+              L383 47
+              L371 36
+              L387 33
+              Z
+            "
+            fill="url(#dots)"
+            stroke="#EC3D88"
+            stroke-width="9"
+            stroke-linejoin="round"
+          />
+
         </svg>
+
       </div>
 
-      <svg class="hint-arrow" viewBox="0 0 24 24" fill="none">
-        <path d="M6 4L14 12L6 20" stroke="#3457C4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <!-- right-side hint arrow -->
+
+      <svg
+        class="hint-arrow"
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+        <path
+          d="M6 4L14 12L6 20"
+          stroke="#3457C4"
+          stroke-width="2.4"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
       </svg>
+
     </div>
+
   </main>
 
+
   <script>
-    // small click feedback on cards — visual pop only, no navigation target defined yet
-    document.querySelectorAll('.card-inner').forEach(function(card){
-      card.addEventListener('click', function(){
-        card.style.transform = 'translateY(-10px) scale(.95)';
-        setTimeout(function(){ card.style.transform = ''; }, 140);
+
+    // Small click feedback on cards.
+    // Navigation itself is handled by each <a href="..."> above.
+
+    document
+      .querySelectorAll('.card-inner')
+      .forEach(function(card){
+
+        card.addEventListener(
+          'click',
+          function(){
+
+            card.style.transform =
+              'translateY(-10px) scale(.95)';
+
+            setTimeout(
+              function(){
+                card.style.transform = '';
+              },
+              140
+            );
+
+          }
+        );
+
       });
-    });
+
   </script>
 
 </body>

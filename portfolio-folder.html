@@ -23,17 +23,6 @@
     --glass-2:rgba(120,215,255,.22);
     --glass-border:rgba(255,255,255,.65);
     --folder-shadow:rgba(8,88,148,.36);
-
-    --c1:#FFDFC7;
-    --c1-deep:#F6B57E;
-    --c2:#D7F1E4;
-    --c2-deep:#9BDFC0;
-    --c3:#E7E1FF;
-    --c3-deep:#B9A9FF;
-    --c4:#FFD9E8;
-    --c4-deep:#F9A9C7;
-    --c5:#D8ECFF;
-    --c5-deep:#9CC7FA;
   }
 
   *{
@@ -54,58 +43,54 @@
     overflow-x:hidden;
   }
 
-  /* ---------- NAV ---------- */
+
+  /* ============================================================
+     TOP NAV
+     ============================================================ */
 
   .top-nav{
     display:flex;
     align-items:center;
-    justify-content:space-between;
+    justify-content:flex-end;
+    position:relative;
+
     max-width:1160px;
     margin:0 auto;
     padding:28px 40px 0;
   }
 
-  .logo{
-    font-family:'Quicksand', sans-serif;
-    font-weight:700;
-    font-size:22px;
-    letter-spacing:.2px;
-    color:var(--ink);
-  }
+  .nav-greeting{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
 
-  .logo span{
-    color:var(--blue-2);
-  }
-
-  .nav-links{
-    display:flex;
-    align-items:center;
-    gap:36px;
-    list-style:none;
     margin:0;
-    padding:0;
-  }
 
-  .nav-links a{
-    text-decoration:none;
-    color:var(--ink-soft);
-    font-size:14.5px;
-    font-weight:500;
-    transition:color .2s ease;
-  }
+    font-family:'Quicksand', sans-serif;
+    font-size:18px;
+    font-weight:700;
+    letter-spacing:.2px;
 
-  .nav-links a:hover{
     color:var(--ink);
+    white-space:nowrap;
+  }
+
+  .nav-greeting span{
+    color:var(--blue-2);
   }
 
   .nav-cta{
     border:1.5px solid var(--ink);
     border-radius:999px;
+
     padding:8px 20px;
+
     font-size:14px;
     font-weight:500;
+
     color:var(--ink);
     text-decoration:none;
+
     transition:
       background .2s ease,
       color .2s ease,
@@ -118,27 +103,70 @@
     transform:translateY(-1px);
   }
 
-  /* ---------- HERO ---------- */
+
+  /* ============================================================
+     HERO
+     ============================================================ */
 
   .hero{
     display:flex;
+    flex-direction:column;
     align-items:center;
     justify-content:center;
+
     min-height:calc(100vh - 90px);
-    padding:20px 20px 60px;
+
+    padding:20px 20px 34px;
   }
 
   .folder-scene{
     position:relative;
+
     width:480px;
     height:540px;
+
     max-width:92vw;
+
     transform:translateY(22px);
   }
+
+  .folder-hint{
+    margin:4px 0 0;
+
+    font-family:'Quicksand', sans-serif;
+    font-size:15px;
+    font-weight:600;
+
+    letter-spacing:.3px;
+
+    color:#70788d;
+
+    text-align:center;
+
+    animation:hint-breathe 2.4s ease-in-out infinite;
+  }
+
+  @keyframes hint-breathe{
+    0%,100%{
+      opacity:.55;
+      transform:translateY(0);
+    }
+
+    50%{
+      opacity:1;
+      transform:translateY(-3px);
+    }
+  }
+
+
+  /* ============================================================
+     FOLDER ASSEMBLY
+     ============================================================ */
 
   .folder-assembly{
     position:absolute;
     inset:0;
+
     animation:breathe 4.5s ease-in-out infinite;
   }
 
@@ -158,11 +186,15 @@
 
   .folder-shadow{
     position:absolute;
+
     left:50%;
     bottom:38px;
+
     width:340px;
     height:52px;
+
     transform:translateX(-50%);
+
     background:
       radial-gradient(
         ellipse at center,
@@ -170,8 +202,11 @@
         rgba(41,58,120,.12) 55%,
         rgba(41,58,120,0) 78%
       );
+
     filter:blur(7px);
+
     animation:shadow-pulse 4.5s ease-in-out infinite;
+
     z-index:0;
   }
 
@@ -182,67 +217,111 @@
     }
 
     50%{
-      transform:translateX(-50%) scale(.92) translateY(3px);
+      transform:
+        translateX(-50%)
+        scale(.92)
+        translateY(3px);
+
       opacity:.72;
     }
   }
 
-  /* ---------- FOLDER BACK ---------- */
+
+  /* ============================================================
+     FOLDER BACK
+     ============================================================ */
 
   .folder-back{
     position:absolute;
+
     left:50%;
     bottom:54px;
-    transform:translateX(-50%) scale(1);
+
+    transform:
+      translateX(-50%)
+      scale(1);
+
     width:348px;
     height:232px;
-    border-radius:14px 24px 28px 28px;
-    background:linear-gradient(
-      155deg,
-      var(--blue-1),
-      var(--blue-2)
-    );
+
+    border-radius:
+      14px
+      24px
+      28px
+      28px;
+
+    background:
+      linear-gradient(
+        155deg,
+        var(--blue-1),
+        var(--blue-2)
+      );
+
     box-shadow:
       0 30px 50px -18px var(--folder-shadow),
       inset 0 -14px 22px rgba(0,0,0,.10),
       inset 0 2px 0 rgba(255,255,255,.18);
+
     z-index:1;
+
     opacity:1;
+
     transition:
       transform .55s cubic-bezier(.2,1.1,.4,1),
       opacity .55s ease;
+
     transform-origin:50% 100%;
   }
 
   .folder-back::before{
     content:"";
+
     position:absolute;
+
     top:-22px;
     left:20px;
+
     width:136px;
     height:29px;
-    background:linear-gradient(
-      155deg,
-      var(--blue-1),
-      var(--blue-tab)
-    );
-    border-radius:14px 18px 0 0;
+
+    background:
+      linear-gradient(
+        155deg,
+        var(--blue-1),
+        var(--blue-tab)
+      );
+
+    border-radius:
+      14px
+      18px
+      0
+      0;
   }
 
   .folder-scene:hover .folder-back{
-    transform:translateX(-50%) scale(.91);
+    transform:
+      translateX(-50%)
+      scale(.91);
+
     opacity:.88;
   }
 
-  /* ---------- CARDS ---------- */
+
+  /* ============================================================
+     CARDS
+     ============================================================ */
 
   .card{
     position:absolute;
+
     left:50%;
+
     transform-origin:50% 100%;
+
     transition:
       transform .6s cubic-bezier(.2,1.15,.4,1),
       z-index 0s;
+
     z-index:2;
   }
 
@@ -251,7 +330,8 @@
   }
 
   /*
-    Any hovered / focused / active card rises above all others.
+    Hover / keyboard focus / touch-selected card
+    always rises above every other card.
   */
 
   .card:hover,
@@ -263,15 +343,26 @@
   .card-inner{
     width:100%;
     height:100%;
+
+    position:relative;
+
     border-radius:24px;
+
     cursor:pointer;
-    border:2.5px solid rgba(255,255,255,.85);
-    box-shadow:0 10px 20px rgba(20,60,110,.18);
+
+    border:
+      2.5px solid
+      rgba(255,255,255,.85);
+
+    box-shadow:
+      0 10px 20px
+      rgba(20,60,110,.18);
+
+    overflow:hidden;
+
     transition:
       transform .28s cubic-bezier(.2,1.2,.4,1),
       box-shadow .28s ease;
-    position:relative;
-    overflow:hidden;
   }
 
   .card-inner:active{
@@ -279,22 +370,33 @@
   }
 
   .folder-scene:hover .card-inner:hover{
-    transform:translateY(-10px) scale(1.07);
-    box-shadow:0 22px 32px rgba(30,42,95,.30);
+    transform:
+      translateY(-10px)
+      scale(1.07);
+
+    box-shadow:
+      0 22px 32px
+      rgba(30,42,95,.30);
   }
 
-  /* ---------- CARD POSITIONS ---------- */
+
+  /* ============================================================
+     CARD 1 — SELF INTRO
+     ============================================================ */
 
   .card-0{
     width:148px;
     height:148px;
+
     bottom:126px;
+
     transform:
-      translate(calc(-50% - 54px), 20px)
+      translate(
+        calc(-50% - 54px),
+        20px
+      )
       rotate(-5deg);
   }
-
-  /* CARD 1 — Self Intro */
 
   .card-0 .card-inner{
     background:
@@ -304,16 +406,24 @@
       no-repeat;
   }
 
+
+  /* ============================================================
+     CARD 2 — SOCIAL MEDIA ROCKER
+     ============================================================ */
+
   .card-1{
     width:148px;
     height:148px;
+
     bottom:128px;
+
     transform:
-      translate(calc(-50% - 26px), 14px)
+      translate(
+        calc(-50% - 26px),
+        14px
+      )
       rotate(-2deg);
   }
-
-  /* CARD 2 — Social Media Rocker */
 
   .card-1 .card-inner{
     background:
@@ -323,16 +433,24 @@
       no-repeat;
   }
 
+
+  /* ============================================================
+     CARD 3 — CONTENT CREATOR
+     ============================================================ */
+
   .card-2{
     width:148px;
     height:148px;
+
     bottom:132px;
+
     transform:
-      translate(-50%, 8px)
+      translate(
+        -50%,
+        8px
+      )
       rotate(1deg);
   }
-
-  /* CARD 3 — Content Creator */
 
   .card-2 .card-inner{
     background:
@@ -342,16 +460,24 @@
       no-repeat;
   }
 
+
+  /* ============================================================
+     CARD 4 — PARTNERSHIP BUILDER
+     ============================================================ */
+
   .card-3{
     width:148px;
     height:148px;
+
     bottom:128px;
+
     transform:
-      translate(calc(-50% + 28px), 14px)
+      translate(
+        calc(-50% + 28px),
+        14px
+      )
       rotate(3deg);
   }
-
-  /* CARD 4 — Partnership Builder */
 
   .card-3 .card-inner{
     background:
@@ -361,16 +487,24 @@
       no-repeat;
   }
 
+
+  /* ============================================================
+     CARD 5 — COMMUNITY MARKETING
+     ============================================================ */
+
   .card-4{
     width:148px;
     height:148px;
+
     bottom:126px;
+
     transform:
-      translate(calc(-50% + 56px), 20px)
+      translate(
+        calc(-50% + 56px),
+        20px
+      )
       rotate(6deg);
   }
-
-  /* CARD 5 — Community Marketing */
 
   .card-4 .card-inner{
     background:
@@ -380,46 +514,65 @@
       no-repeat;
   }
 
-  /* ---------- CARD HOVER FAN ---------- */
+
+  /* ============================================================
+     DESKTOP CARD FAN
+     ============================================================ */
 
   .folder-scene:hover .card-0{
     transform:
-      translate(calc(-50% - 205px), -72px)
+      translate(
+        calc(-50% - 205px),
+        -72px
+      )
       rotate(-17deg);
+
     z-index:8;
   }
 
   .folder-scene:hover .card-1{
     transform:
-      translate(calc(-50% - 103px), -138px)
+      translate(
+        calc(-50% - 103px),
+        -138px
+      )
       rotate(-8deg);
+
     z-index:6;
   }
 
   .folder-scene:hover .card-2{
     transform:
-      translate(calc(-50% - 6px), -174px)
+      translate(
+        calc(-50% - 6px),
+        -174px
+      )
       rotate(1deg);
+
     z-index:7;
   }
 
   .folder-scene:hover .card-3{
     transform:
-      translate(calc(-50% + 82px), -132px)
+      translate(
+        calc(-50% + 82px),
+        -132px
+      )
       rotate(9deg);
+
     z-index:9;
   }
 
   .folder-scene:hover .card-4{
     transform:
-      translate(calc(-50% + 168px), -72px)
+      translate(
+        calc(-50% + 168px),
+        -72px
+      )
       rotate(16deg);
+
     z-index:10;
   }
-
-  /*
-    Re-assert rise-to-front after the per-card fan z-index values.
-  */
 
   .folder-scene:hover .card:hover,
   .folder-scene:hover .card:focus-within,
@@ -427,17 +580,31 @@
     z-index:50 !important;
   }
 
-  /* ---------- FOLDER FRONT ---------- */
+
+  /* ============================================================
+     FOLDER FRONT
+     ============================================================ */
 
   .folder-front{
     position:absolute;
+
     left:50%;
     bottom:54px;
-    transform:translateX(-50%) scale(1);
+
+    transform:
+      translateX(-50%)
+      scale(1);
+
     transform-origin:50% 100%;
+
     width:312px;
     height:156px;
-    border-radius:3px 3px 22px 22px;
+
+    border-radius:
+      3px
+      3px
+      22px
+      22px;
 
     background:
       linear-gradient(
@@ -447,10 +614,18 @@
         rgba(90,205,250,.18) 100%
       );
 
-    backdrop-filter:blur(16px) saturate(180%);
-    -webkit-backdrop-filter:blur(16px) saturate(180%);
+    backdrop-filter:
+      blur(16px)
+      saturate(180%);
 
-    border:1px solid rgba(255,255,255,.65);
+    -webkit-backdrop-filter:
+      blur(16px)
+      saturate(180%);
+
+    border:
+      1px solid
+      rgba(255,255,255,.65);
+
     border-top:none;
 
     box-shadow:
@@ -459,6 +634,7 @@
       inset 0 0 24px rgba(255,255,255,.10);
 
     overflow:hidden;
+
     z-index:4;
 
     transition:
@@ -470,17 +646,22 @@
 
   .folder-front::after{
     content:"";
+
     position:absolute;
+
     top:0;
     left:-20%;
+
     width:55%;
     height:100%;
+
     background:
       linear-gradient(
         120deg,
         rgba(255,255,255,.35) 0%,
         rgba(255,255,255,0) 70%
       );
+
     transform:skewX(-14deg);
   }
 
@@ -489,27 +670,40 @@
       translateX(-50%)
       translateY(10px)
       scale(.88);
+
     opacity:.62;
   }
 
-  /* ---------- LYDIA'S PORTFOLIO LOGO ---------- */
+
+  /* ============================================================
+     LYDIA'S PORTFOLIO LOGO
+     ============================================================ */
 
   .badge-logo{
     position:absolute;
+
     left:50%;
     bottom:68px;
+
     width:245px;
     height:auto;
+
     transform:
       translateX(-50%)
       rotate(-4deg);
+
     transform-origin:50% 50%;
+
     filter:
       drop-shadow(
-        0 9px 0 rgba(130,128,145,.30)
+        0 9px 0
+        rgba(130,128,145,.30)
       );
+
     z-index:5;
+
     pointer-events:none;
+
     transition:
       transform .5s cubic-bezier(.2,1.1,.4,1);
   }
@@ -522,17 +716,28 @@
       scale(1.04);
   }
 
-  /* ---------- HINT ARROW ---------- */
+
+  /* ============================================================
+     HINT ARROW
+     ============================================================ */
 
   .hint-arrow{
     position:absolute;
+
     right:6px;
     top:52%;
+
     transform:translateY(-50%);
+
     width:34px;
     height:34px;
+
     z-index:5;
-    animation:nudge 2.2s ease-in-out infinite;
+
+    animation:
+      nudge 2.2s
+      ease-in-out infinite;
+
     opacity:.55;
   }
 
@@ -545,6 +750,7 @@
       transform:
         translateY(-50%)
         translateX(0);
+
       opacity:.35;
     }
 
@@ -552,16 +758,22 @@
       transform:
         translateY(-50%)
         translateX(8px);
+
       opacity:.75;
     }
   }
 
-  /* ---------- REDUCED MOTION ---------- */
+
+  /* ============================================================
+     REDUCED MOTION
+     ============================================================ */
 
   @media (prefers-reduced-motion: reduce){
+
     .folder-assembly,
     .folder-shadow,
-    .hint-arrow{
+    .hint-arrow,
+    .folder-hint{
       animation:none !important;
     }
 
@@ -572,8 +784,9 @@
     }
   }
 
+
   /* ============================================================
-     MOBILE LAYOUT
+     MOBILE — 560PX AND BELOW
      ============================================================ */
 
   @media (max-width:560px){
@@ -582,35 +795,69 @@
       min-height:100svh;
     }
 
+
+    /* ---------- MOBILE HEADER ---------- */
+
     .top-nav{
       width:100%;
-      padding:20px 18px 0;
+
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+
+      gap:10px;
+
+      padding:
+        20px
+        16px
+        0;
     }
 
-    .logo{
-      font-size:20px;
-    }
+    .nav-greeting{
+      position:static;
 
-    .nav-links{
-      display:none;
+      left:auto;
+
+      transform:none;
+
+      font-size:16px;
+
+      white-space:normal;
+
+      text-align:center;
     }
 
     .nav-cta{
-      padding:7px 15px;
+      padding:
+        6px
+        15px;
+
       font-size:12.5px;
     }
 
+
+    /* ---------- MOBILE HERO ---------- */
+
     .hero{
-      min-height:calc(100svh - 72px);
-      padding:0;
+      min-height:
+        calc(100svh - 100px);
+
+      padding:
+        0
+        0
+        22px;
+
       overflow:hidden;
-      align-items:flex-start;
+
+      justify-content:flex-start;
     }
 
     .folder-scene{
       width:480px;
       min-width:480px;
       max-width:none;
+
       height:540px;
 
       transform:
@@ -622,6 +869,19 @@
 
       margin-bottom:-145px;
     }
+
+    .folder-hint{
+      margin:
+        0
+        16px;
+
+      font-size:14px;
+
+      line-height:1.5;
+    }
+
+
+    /* ---------- MOBILE MOTION ---------- */
 
     .folder-assembly{
       animation:none;
@@ -635,12 +895,16 @@
       display:none;
     }
 
+
     /* ---------- MOBILE CARD FAN ---------- */
 
     .folder-scene .card-0,
     .folder-scene:hover .card-0{
       transform:
-        translate(calc(-50% - 126px), -56px)
+        translate(
+          calc(-50% - 126px),
+          -56px
+        )
         rotate(-14deg);
 
       z-index:8;
@@ -649,7 +913,10 @@
     .folder-scene .card-1,
     .folder-scene:hover .card-1{
       transform:
-        translate(calc(-50% - 64px), -108px)
+        translate(
+          calc(-50% - 64px),
+          -108px
+        )
         rotate(-7deg);
 
       z-index:7;
@@ -658,7 +925,10 @@
     .folder-scene .card-2,
     .folder-scene:hover .card-2{
       transform:
-        translate(calc(-50% - 2px), -132px)
+        translate(
+          calc(-50% - 2px),
+          -132px
+        )
         rotate(1deg);
 
       z-index:8;
@@ -667,7 +937,10 @@
     .folder-scene .card-3,
     .folder-scene:hover .card-3{
       transform:
-        translate(calc(-50% + 60px), -104px)
+        translate(
+          calc(-50% + 60px),
+          -104px
+        )
         rotate(8deg);
 
       z-index:9;
@@ -676,20 +949,22 @@
     .folder-scene .card-4,
     .folder-scene:hover .card-4{
       transform:
-        translate(calc(-50% + 120px), -54px)
+        translate(
+          calc(-50% + 120px),
+          -54px
+        )
         rotate(14deg);
 
       z-index:10;
     }
 
-    /*
-      Touch-selected card stays above all other cards.
-    */
-
     .folder-scene .card.is-active,
     .folder-scene:hover .card.is-active{
       z-index:50 !important;
     }
+
+
+    /* ---------- MOBILE FOLDER ---------- */
 
     .folder-scene .folder-back,
     .folder-scene:hover .folder-back{
@@ -719,9 +994,8 @@
         scale(1.02);
     }
 
-    /*
-      Remove mouse-hover enlargement on touch layouts.
-    */
+
+    /* ---------- MOBILE TOUCH ---------- */
 
     .folder-scene .card-inner:hover{
       transform:none;
@@ -733,23 +1007,27 @@
         scale(.96);
 
       box-shadow:
-        0 16px 26px rgba(30,42,95,.26);
+        0 16px 26px
+        rgba(30,42,95,.26);
     }
   }
 
-  /* ---------- SMALLER PHONES ---------- */
+
+  /* ============================================================
+     SMALLER PHONES
+     ============================================================ */
 
   @media (max-width:400px){
 
     .top-nav{
       padding:
-        18px
-        15px
+        17px
+        14px
         0;
     }
 
-    .logo{
-      font-size:19px;
+    .nav-greeting{
+      font-size:15px;
     }
 
     .nav-cta{
@@ -767,11 +1045,22 @@
 
       margin-bottom:-175px;
     }
+
+    .folder-hint{
+      font-size:13.5px;
+    }
   }
 
-  /* ---------- VERY SMALL PHONES ---------- */
+
+  /* ============================================================
+     VERY SMALL PHONES
+     ============================================================ */
 
   @media (max-width:350px){
+
+    .nav-greeting{
+      font-size:14px;
+    }
 
     .folder-scene{
       transform:
@@ -780,6 +1069,10 @@
 
       margin-bottom:-205px;
     }
+
+    .folder-hint{
+      font-size:13px;
+    }
   }
 
 </style>
@@ -787,25 +1080,16 @@
 
 <body>
 
+
+  <!-- =========================================================
+       HEADER
+       ========================================================= -->
+
   <nav class="top-nav">
 
-    <div class="logo">
-      folio<span>.</span>
-    </div>
-
-    <ul class="nav-links">
-      <li>
-        <a href="#work">作品</a>
-      </li>
-
-      <li>
-        <a href="#about">关于</a>
-      </li>
-
-      <li>
-        <a href="#contact">联系</a>
-      </li>
-    </ul>
+    <p class="nav-greeting">
+      Greeeeeeetings from Lydia<span>!</span> ✦
+    </p>
 
     <a
       class="nav-cta"
@@ -815,6 +1099,11 @@
     </a>
 
   </nav>
+
+
+  <!-- =========================================================
+       PORTFOLIO HERO
+       ========================================================= -->
 
   <main class="hero">
 
@@ -827,9 +1116,13 @@
 
       <div class="folder-assembly">
 
+
         <div class="folder-back"></div>
 
-        <!-- CARD 1: About Me -->
+
+        <!-- =====================================================
+             CARD 1 — ABOUT ME
+             ===================================================== -->
 
         <a
           class="card card-0"
@@ -841,7 +1134,10 @@
           <div class="card-inner"></div>
         </a>
 
-        <!-- CARD 2: Social Media Landscape -->
+
+        <!-- =====================================================
+             CARD 2 — SOCIAL MEDIA
+             ===================================================== -->
 
         <a
           class="card card-1"
@@ -853,7 +1149,10 @@
           <div class="card-inner"></div>
         </a>
 
-        <!-- CARD 3: Content Output -->
+
+        <!-- =====================================================
+             CARD 3 — CONTENT CREATOR
+             ===================================================== -->
 
         <a
           class="card card-2"
@@ -865,7 +1164,10 @@
           <div class="card-inner"></div>
         </a>
 
-        <!-- CARD 4: Partnership Expansion -->
+
+        <!-- =====================================================
+             CARD 4 — PARTNERSHIP
+             ===================================================== -->
 
         <a
           class="card card-3"
@@ -877,7 +1179,10 @@
           <div class="card-inner"></div>
         </a>
 
-        <!-- CARD 5: Community Marketing -->
+
+        <!-- =====================================================
+             CARD 5 — COMMUNITY MARKETING
+             ===================================================== -->
 
         <a
           class="card card-4"
@@ -889,9 +1194,13 @@
           <div class="card-inner"></div>
         </a>
 
+
         <div class="folder-front"></div>
 
-        <!-- Lydia's Portfolio sticker -->
+
+        <!-- =====================================================
+             LYDIA'S PORTFOLIO STICKER
+             ===================================================== -->
 
         <svg
           class="badge-logo"
@@ -908,6 +1217,7 @@
               height="8"
               patternUnits="userSpaceOnUse"
             >
+
               <rect
                 width="8"
                 height="8"
@@ -921,9 +1231,13 @@
                 fill="#F3A7C4"
                 opacity=".8"
               />
+
             </pattern>
 
           </defs>
+
+
+          <!-- SHADOW -->
 
           <text
             x="215"
@@ -943,6 +1257,7 @@
             Lydia's
           </text>
 
+
           <text
             x="215"
             y="148"
@@ -961,6 +1276,9 @@
             Portfolio
           </text>
 
+
+          <!-- OUTER PINK -->
+
           <text
             x="215"
             y="72"
@@ -979,6 +1297,7 @@
           >
             Lydia's
           </text>
+
 
           <text
             x="215"
@@ -999,6 +1318,9 @@
             Portfolio
           </text>
 
+
+          <!-- INNER PINK -->
+
           <text
             x="215"
             y="72"
@@ -1018,6 +1340,7 @@
             Lydia's
           </text>
 
+
           <text
             x="215"
             y="138"
@@ -1036,6 +1359,9 @@
           >
             Portfolio
           </text>
+
+
+          <!-- STAR LEFT -->
 
           <path
             d="
@@ -1056,6 +1382,9 @@
             stroke-width="9"
             stroke-linejoin="round"
           />
+
+
+          <!-- STAR RIGHT -->
 
           <path
             d="
@@ -1081,11 +1410,17 @@
 
       </div>
 
+
+      <!-- =====================================================
+           DESKTOP HINT ARROW
+           ===================================================== -->
+
       <svg
         class="hint-arrow"
         viewBox="0 0 24 24"
         fill="none"
       >
+
         <path
           d="M6 4L14 12L6 20"
           stroke="#3457C4"
@@ -1093,21 +1428,36 @@
           stroke-linecap="round"
           stroke-linejoin="round"
         />
+
       </svg>
 
     </div>
 
+
+    <!-- =======================================================
+         NEW FOLDER HINT
+         ======================================================= -->
+
+    <p class="folder-hint">
+      请将鼠标悬停至文件夹～
+    </p>
+
   </main>
+
+
+  <!-- =========================================================
+       CARD INTERACTION
+       ========================================================= -->
 
   <script>
 
     const cards =
       document.querySelectorAll('.card');
 
+
     /*
-      Touch / pointer interaction:
-      whichever card is pressed becomes the top card.
-      Normal link navigation still works.
+      Bring the currently interacted card
+      above every other card.
     */
 
     cards.forEach(function(card){
@@ -1125,6 +1475,7 @@
         }
       );
 
+
       card.addEventListener(
         'pointerenter',
         function(){
@@ -1134,15 +1485,18 @@
               '(hover: hover) and (pointer: fine)'
             ).matches
           ){
+
             cards.forEach(function(otherCard){
               otherCard.classList.remove('is-active');
             });
 
             card.classList.add('is-active');
+
           }
 
         }
       );
+
 
       card.addEventListener(
         'pointerleave',
@@ -1153,7 +1507,9 @@
               '(hover: hover) and (pointer: fine)'
             ).matches
           ){
+
             card.classList.remove('is-active');
+
           }
 
         }
@@ -1179,7 +1535,9 @@
 
             setTimeout(
               function(){
+
                 cardInner.style.transform = '';
+
               },
               140
             );

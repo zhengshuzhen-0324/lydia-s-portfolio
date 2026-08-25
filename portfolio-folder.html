@@ -250,6 +250,16 @@
     z-index:6;
   }
 
+  /*
+    Any hovered / focused / active card rises above all others.
+  */
+
+  .card:hover,
+  .card:focus-within,
+  .card.is-active{
+    z-index:50 !important;
+  }
+
   .card-inner{
     width:100%;
     height:100%;
@@ -407,6 +417,16 @@
     z-index:10;
   }
 
+  /*
+    Re-assert rise-to-front after the per-card fan z-index values.
+  */
+
+  .folder-scene:hover .card:hover,
+  .folder-scene:hover .card:focus-within,
+  .folder-scene:hover .card.is-active{
+    z-index:50 !important;
+  }
+
   /* ---------- FOLDER FRONT ---------- */
 
   .folder-front{
@@ -552,10 +572,8 @@
     }
   }
 
-
   /* ============================================================
      MOBILE LAYOUT
-     Desktop rules above remain unchanged.
      ============================================================ */
 
   @media (max-width:560px){
@@ -589,11 +607,6 @@
       align-items:flex-start;
     }
 
-    /*
-      Keep the original desktop coordinate system.
-      Scale the whole scene only on mobile.
-    */
-
     .folder-scene{
       width:480px;
       min-width:480px;
@@ -610,12 +623,6 @@
       margin-bottom:-145px;
     }
 
-    /*
-      Mobile does not depend on hover.
-      Cards stay opened in a compact fan,
-      so all five remain visible and tappable.
-    */
-
     .folder-assembly{
       animation:none;
     }
@@ -628,8 +635,7 @@
       display:none;
     }
 
-
-    /* MOBILE CARD FAN */
+    /* ---------- MOBILE CARD FAN ---------- */
 
     .folder-scene .card-0,
     .folder-scene:hover .card-0{
@@ -676,11 +682,14 @@
       z-index:10;
     }
 
-
     /*
-      Keep folder slightly smaller/open
-      so mobile users can see the cards clearly.
+      Touch-selected card stays above all other cards.
     */
+
+    .folder-scene .card.is-active,
+    .folder-scene:hover .card.is-active{
+      z-index:50 !important;
+    }
 
     .folder-scene .folder-back,
     .folder-scene:hover .folder-back{
@@ -710,10 +719,8 @@
         scale(1.02);
     }
 
-
     /*
-      Touch feedback.
-      No desktop hover dependency.
+      Remove mouse-hover enlargement on touch layouts.
     */
 
     .folder-scene .card-inner:hover{
@@ -729,7 +736,6 @@
         0 16px 26px rgba(30,42,95,.26);
     }
   }
-
 
   /* ---------- SMALLER PHONES ---------- */
 
@@ -762,7 +768,6 @@
       margin-bottom:-175px;
     }
   }
-
 
   /* ---------- VERY SMALL PHONES ---------- */
 
@@ -811,7 +816,6 @@
 
   </nav>
 
-
   <main class="hero">
 
     <div
@@ -825,7 +829,6 @@
 
         <div class="folder-back"></div>
 
-
         <!-- CARD 1: About Me -->
 
         <a
@@ -837,7 +840,6 @@
         >
           <div class="card-inner"></div>
         </a>
-
 
         <!-- CARD 2: Social Media Landscape -->
 
@@ -851,7 +853,6 @@
           <div class="card-inner"></div>
         </a>
 
-
         <!-- CARD 3: Content Output -->
 
         <a
@@ -863,7 +864,6 @@
         >
           <div class="card-inner"></div>
         </a>
-
 
         <!-- CARD 4: Partnership Expansion -->
 
@@ -877,7 +877,6 @@
           <div class="card-inner"></div>
         </a>
 
-
         <!-- CARD 5: Community Marketing -->
 
         <a
@@ -890,9 +889,7 @@
           <div class="card-inner"></div>
         </a>
 
-
         <div class="folder-front"></div>
-
 
         <!-- Lydia's Portfolio sticker -->
 
@@ -928,7 +925,6 @@
 
           </defs>
 
-
           <text
             x="215"
             y="82"
@@ -946,7 +942,6 @@
           >
             Lydia's
           </text>
-
 
           <text
             x="215"
@@ -966,7 +961,6 @@
             Portfolio
           </text>
 
-
           <text
             x="215"
             y="72"
@@ -985,7 +979,6 @@
           >
             Lydia's
           </text>
-
 
           <text
             x="215"
@@ -1006,7 +999,6 @@
             Portfolio
           </text>
 
-
           <text
             x="215"
             y="72"
@@ -1026,7 +1018,6 @@
             Lydia's
           </text>
 
-
           <text
             x="215"
             y="138"
@@ -1045,7 +1036,6 @@
           >
             Portfolio
           </text>
-
 
           <path
             d="
@@ -1066,7 +1056,6 @@
             stroke-width="9"
             stroke-linejoin="round"
           />
-
 
           <path
             d="
@@ -1092,7 +1081,6 @@
 
       </div>
 
-
       <svg
         class="hint-arrow"
         viewBox="0 0 24 24"
@@ -1111,23 +1099,87 @@
 
   </main>
 
-
   <script>
+
+    const cards =
+      document.querySelectorAll('.card');
+
+    /*
+      Touch / pointer interaction:
+      whichever card is pressed becomes the top card.
+      Normal link navigation still works.
+    */
+
+    cards.forEach(function(card){
+
+      card.addEventListener(
+        'pointerdown',
+        function(){
+
+          cards.forEach(function(otherCard){
+            otherCard.classList.remove('is-active');
+          });
+
+          card.classList.add('is-active');
+
+        }
+      );
+
+      card.addEventListener(
+        'pointerenter',
+        function(){
+
+          if(
+            window.matchMedia(
+              '(hover: hover) and (pointer: fine)'
+            ).matches
+          ){
+            cards.forEach(function(otherCard){
+              otherCard.classList.remove('is-active');
+            });
+
+            card.classList.add('is-active');
+          }
+
+        }
+      );
+
+      card.addEventListener(
+        'pointerleave',
+        function(){
+
+          if(
+            window.matchMedia(
+              '(hover: hover) and (pointer: fine)'
+            ).matches
+          ){
+            card.classList.remove('is-active');
+          }
+
+        }
+      );
+
+    });
+
+
+    /*
+      Existing click feedback.
+    */
 
     document
       .querySelectorAll('.card-inner')
-      .forEach(function(card){
+      .forEach(function(cardInner){
 
-        card.addEventListener(
+        cardInner.addEventListener(
           'click',
           function(){
 
-            card.style.transform =
+            cardInner.style.transform =
               'translateY(-10px) scale(.95)';
 
             setTimeout(
               function(){
-                card.style.transform = '';
+                cardInner.style.transform = '';
               },
               140
             );

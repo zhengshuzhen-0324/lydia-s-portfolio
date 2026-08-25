@@ -70,7 +70,7 @@
 
     font-family:'Quicksand', sans-serif;
 
-    font-size:18px;
+    font-size:36px;
     font-weight:700;
 
     letter-spacing:.2px;
@@ -89,7 +89,7 @@
 
     font-family:'Quicksand', sans-serif;
 
-    font-size:14px;
+    font-size:28px;
     font-weight:600;
 
     letter-spacing:.1px;
@@ -797,6 +797,22 @@
 
 
   /* ============================================================
+     MEDIUM DESKTOP / SMALL LAPTOP
+     ============================================================ */
+
+  @media (min-width:561px) and (max-width:900px){
+
+    .nav-greeting{
+      font-size:26px;
+    }
+
+    .nav-vibes{
+      font-size:18px;
+    }
+  }
+
+
+  /* ============================================================
      REDUCED MOTION
      ============================================================ */
 
@@ -1118,11 +1134,6 @@
 
 <body>
 
-
-  <!-- =========================================================
-       HEADER
-       ========================================================= -->
-
   <nav class="top-nav">
 
     <p class="nav-greeting">
@@ -1136,10 +1147,6 @@
   </nav>
 
 
-  <!-- =========================================================
-       PORTFOLIO HERO
-       ========================================================= -->
-
   <main class="hero">
 
     <div
@@ -1150,7 +1157,6 @@
       <div class="folder-shadow"></div>
 
       <div class="folder-assembly">
-
 
         <div class="folder-back"></div>
 
@@ -1223,9 +1229,7 @@
         <div class="folder-front"></div>
 
 
-        <!-- =====================================================
-             LYDIA'S PORTFOLIO STICKER
-             ===================================================== -->
+        <!-- Lydia's Portfolio sticker -->
 
         <svg
           class="badge-logo"
@@ -1436,10 +1440,6 @@
       </div>
 
 
-      <!-- =====================================================
-           DESKTOP HINT ARROW
-           ===================================================== -->
-
       <svg
         class="hint-arrow"
         viewBox="0 0 24 24"
@@ -1459,10 +1459,6 @@
     </div>
 
 
-    <!-- =======================================================
-         FOLDER HINT
-         ======================================================= -->
-
     <p class="folder-hint">
       请将鼠标悬停至文件夹～
     </p>
@@ -1470,20 +1466,11 @@
   </main>
 
 
-  <!-- =========================================================
-       CARD INTERACTION
-       ========================================================= -->
-
   <script>
 
     const cards =
       document.querySelectorAll('.card');
 
-
-    /*
-      Bring currently interacted card
-      above every other card.
-    */
 
     cards.forEach(function(card){
 
@@ -1542,10 +1529,6 @@
 
     });
 
-
-    /*
-      Existing click feedback.
-    */
 
     document
       .querySelectorAll('.card-inner')

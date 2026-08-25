@@ -42,36 +42,40 @@
 
 
   /* ============================================================
-     TOP NAV
+     DESKTOP HEADER
+     两句话上下排列，居中放在文件夹上方
      ============================================================ */
 
   .top-nav{
-    display:flex;
-    align-items:center;
-    justify-content:flex-end;
-
-    position:relative;
-
+    width:100%;
     max-width:1160px;
+
     margin:0 auto;
 
-    padding:28px 40px 0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    gap:24px;
+
+    padding:
+      58px
+      30px
+      10px;
+
+    text-align:center;
   }
 
   .nav-greeting{
-    position:absolute;
-
-    left:50%;
-
-    transform:
-      translateX(-50%);
-
     margin:0;
 
     font-family:'Quicksand', sans-serif;
 
-    font-size:36px;
+    font-size:40px;
     font-weight:700;
+
+    line-height:1.15;
 
     letter-spacing:.2px;
 
@@ -89,8 +93,10 @@
 
     font-family:'Quicksand', sans-serif;
 
-    font-size:28px;
+    font-size:30px;
     font-weight:600;
+
+    line-height:1.2;
 
     letter-spacing:.1px;
 
@@ -113,10 +119,10 @@
     justify-content:center;
 
     min-height:
-      calc(100vh - 90px);
+      calc(100vh - 180px);
 
     padding:
-      20px
+      0
       20px
       34px;
   }
@@ -130,7 +136,7 @@
     max-width:92vw;
 
     transform:
-      translateY(22px);
+      translateY(2px);
   }
 
   .folder-hint{
@@ -797,17 +803,32 @@
 
 
   /* ============================================================
-     MEDIUM DESKTOP / SMALL LAPTOP
+     SMALL / MEDIUM LAPTOP
+     依然上下居中，但防止文字过宽
      ============================================================ */
 
   @media (min-width:561px) and (max-width:900px){
 
+    .top-nav{
+      gap:18px;
+
+      padding:
+        44px
+        20px
+        8px;
+    }
+
     .nav-greeting{
-      font-size:26px;
+      font-size:30px;
     }
 
     .nav-vibes{
-      font-size:18px;
+      font-size:22px;
+    }
+
+    .hero{
+      min-height:
+        calc(100vh - 150px);
     }
   }
 
@@ -834,7 +855,7 @@
 
 
   /* ============================================================
-     MOBILE — 560PX AND BELOW
+     MOBILE — 保持之前布局不变
      ============================================================ */
 
   @media (max-width:560px){
@@ -866,8 +887,6 @@
 
     .nav-greeting{
       position:static;
-
-      left:auto;
 
       transform:none;
 
@@ -1134,6 +1153,11 @@
 
 <body>
 
+
+  <!-- =========================================================
+       HEADER
+       ========================================================= -->
+
   <nav class="top-nav">
 
     <p class="nav-greeting">
@@ -1146,6 +1170,10 @@
 
   </nav>
 
+
+  <!-- =========================================================
+       PORTFOLIO HERO
+       ========================================================= -->
 
   <main class="hero">
 
@@ -1229,7 +1257,9 @@
         <div class="folder-front"></div>
 
 
-        <!-- Lydia's Portfolio sticker -->
+        <!-- =====================================================
+             LYDIA'S PORTFOLIO STICKER
+             ===================================================== -->
 
         <svg
           class="badge-logo"
@@ -1440,6 +1470,10 @@
       </div>
 
 
+      <!-- =====================================================
+           DESKTOP HINT ARROW
+           ===================================================== -->
+
       <svg
         class="hint-arrow"
         viewBox="0 0 24 24"
@@ -1459,12 +1493,20 @@
     </div>
 
 
+    <!-- =======================================================
+         FOLDER HINT
+         ======================================================= -->
+
     <p class="folder-hint">
       请将鼠标悬停至文件夹～
     </p>
 
   </main>
 
+
+  <!-- =========================================================
+       CARD INTERACTION
+       ========================================================= -->
 
   <script>
 

@@ -536,6 +536,8 @@
     }
   }
 
+  /* ---------- REDUCED MOTION ---------- */
+
   @media (prefers-reduced-motion: reduce){
     .folder-assembly,
     .folder-shadow,
@@ -550,19 +552,231 @@
     }
   }
 
+
+  /* ============================================================
+     MOBILE LAYOUT
+     Desktop rules above remain unchanged.
+     ============================================================ */
+
   @media (max-width:560px){
+
+    body{
+      min-height:100svh;
+    }
+
     .top-nav{
-      padding:22px 20px 0;
+      width:100%;
+      padding:20px 18px 0;
+    }
+
+    .logo{
+      font-size:20px;
     }
 
     .nav-links{
       display:none;
     }
 
+    .nav-cta{
+      padding:7px 15px;
+      font-size:12.5px;
+    }
+
+    .hero{
+      min-height:calc(100svh - 72px);
+      padding:0;
+      overflow:hidden;
+      align-items:flex-start;
+    }
+
+    /*
+      Keep the original desktop coordinate system.
+      Scale the whole scene only on mobile.
+    */
+
     .folder-scene{
-      transform:scale(.82);
+      width:480px;
+      min-width:480px;
+      max-width:none;
+      height:540px;
+
+      transform:
+        translateY(-2px)
+        scale(.72);
+
+      transform-origin:
+        top center;
+
+      margin-bottom:-145px;
+    }
+
+    /*
+      Mobile does not depend on hover.
+      Cards stay opened in a compact fan,
+      so all five remain visible and tappable.
+    */
+
+    .folder-assembly{
+      animation:none;
+    }
+
+    .folder-shadow{
+      animation:none;
+    }
+
+    .hint-arrow{
+      display:none;
+    }
+
+
+    /* MOBILE CARD FAN */
+
+    .folder-scene .card-0,
+    .folder-scene:hover .card-0{
+      transform:
+        translate(calc(-50% - 126px), -56px)
+        rotate(-14deg);
+
+      z-index:8;
+    }
+
+    .folder-scene .card-1,
+    .folder-scene:hover .card-1{
+      transform:
+        translate(calc(-50% - 64px), -108px)
+        rotate(-7deg);
+
+      z-index:7;
+    }
+
+    .folder-scene .card-2,
+    .folder-scene:hover .card-2{
+      transform:
+        translate(calc(-50% - 2px), -132px)
+        rotate(1deg);
+
+      z-index:8;
+    }
+
+    .folder-scene .card-3,
+    .folder-scene:hover .card-3{
+      transform:
+        translate(calc(-50% + 60px), -104px)
+        rotate(8deg);
+
+      z-index:9;
+    }
+
+    .folder-scene .card-4,
+    .folder-scene:hover .card-4{
+      transform:
+        translate(calc(-50% + 120px), -54px)
+        rotate(14deg);
+
+      z-index:10;
+    }
+
+
+    /*
+      Keep folder slightly smaller/open
+      so mobile users can see the cards clearly.
+    */
+
+    .folder-scene .folder-back,
+    .folder-scene:hover .folder-back{
+      transform:
+        translateX(-50%)
+        scale(.92);
+
+      opacity:.9;
+    }
+
+    .folder-scene .folder-front,
+    .folder-scene:hover .folder-front{
+      transform:
+        translateX(-50%)
+        translateY(8px)
+        scale(.9);
+
+      opacity:.72;
+    }
+
+    .folder-scene .badge-logo,
+    .folder-scene:hover .badge-logo{
+      transform:
+        translateX(-50%)
+        rotate(-2deg)
+        translateY(-3px)
+        scale(1.02);
+    }
+
+
+    /*
+      Touch feedback.
+      No desktop hover dependency.
+    */
+
+    .folder-scene .card-inner:hover{
+      transform:none;
+    }
+
+    .folder-scene .card-inner:active{
+      transform:
+        translateY(-6px)
+        scale(.96);
+
+      box-shadow:
+        0 16px 26px rgba(30,42,95,.26);
     }
   }
+
+
+  /* ---------- SMALLER PHONES ---------- */
+
+  @media (max-width:400px){
+
+    .top-nav{
+      padding:
+        18px
+        15px
+        0;
+    }
+
+    .logo{
+      font-size:19px;
+    }
+
+    .nav-cta{
+      padding:
+        6px
+        13px;
+
+      font-size:12px;
+    }
+
+    .folder-scene{
+      transform:
+        translateY(4px)
+        scale(.67);
+
+      margin-bottom:-175px;
+    }
+  }
+
+
+  /* ---------- VERY SMALL PHONES ---------- */
+
+  @media (max-width:350px){
+
+    .folder-scene{
+      transform:
+        translateY(8px)
+        scale(.61);
+
+      margin-bottom:-205px;
+    }
+  }
+
 </style>
 </head>
 
@@ -596,6 +810,7 @@
     </a>
 
   </nav>
+
 
   <main class="hero">
 
